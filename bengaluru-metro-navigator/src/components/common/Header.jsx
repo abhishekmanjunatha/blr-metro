@@ -39,7 +39,7 @@ export default function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
             <img 
-              src="/tinywow_Namma_Metro_Logo_87426246.svg" 
+              src={import.meta.env.BASE_URL + 'tinywow_Namma_Metro_Logo_87426246.svg'} 
               alt="Namma Metro" 
               className="w-10 h-10 object-contain transform group-hover:scale-105 transition-transform"
             />

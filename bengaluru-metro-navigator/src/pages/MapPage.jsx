@@ -43,7 +43,7 @@ export default function MapPage() {
 
           <div className="overflow-auto border border-gray-200 rounded-lg" style={{ maxHeight: '70vh' }}>
             <img 
-              src="/metro-map.png" 
+              src={import.meta.env.BASE_URL + 'metro-map.png'} 
               alt="Bengaluru Namma Metro Network Map" 
               className="w-full h-auto transition-transform"
               style={{ transform: `scale(${zoom})`, transformOrigin: 'top left' }}

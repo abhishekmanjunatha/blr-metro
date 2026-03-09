@@ -29,7 +29,7 @@ function SimpleHeader() {
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <img 
-            src="/tinywow_Namma_Metro_Logo_87426246.svg" 
+            src={import.meta.env.BASE_URL + 'tinywow_Namma_Metro_Logo_87426246.svg'} 
             alt="Namma Metro" 
             className="w-10 h-10 object-contain"
           />
