@@ -1,12 +1,13 @@
 const CACHE_NAME = 'namma-metro-v1';
+const BASE = self.location.pathname.replace(/\/sw\.js$/, '');
 const STATIC_ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/favicon.svg',
-  '/data/stations.json',
-  '/data/attractions.json',
-  '/data/fares.json'
+  BASE + '/',
+  BASE + '/index.html',
+  BASE + '/manifest.json',
+  BASE + '/favicon.svg',
+  BASE + '/data/stations.json',
+  BASE + '/data/attractions.json',
+  BASE + '/data/fares.json'
 ];
 
 // Install event - cache static assets

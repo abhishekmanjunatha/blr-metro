@@ -22,7 +22,7 @@ export async function fetchStationsData() {
   }
   
   try {
-    const response = await fetch('/data/stations.json');
+    const response = await fetch(`${import.meta.env.BASE_URL}data/stations.json`);
     if (!response.ok) throw new Error('Failed to fetch stations');
     
     const data = await response.json();
@@ -46,7 +46,7 @@ export async function fetchAttractionsData() {
   }
   
   try {
-    const response = await fetch('/data/attractions.json');
+    const response = await fetch(`${import.meta.env.BASE_URL}data/attractions.json`);
     if (!response.ok) throw new Error('Failed to fetch attractions');
     
     const data = await response.json();
@@ -69,7 +69,7 @@ export async function fetchFaresData() {
   }
   
   try {
-    const response = await fetch('/data/fares.json');
+    const response = await fetch(`${import.meta.env.BASE_URL}data/fares.json`);
     if (!response.ok) throw new Error('Failed to fetch fares');
     
     const data = await response.json();
