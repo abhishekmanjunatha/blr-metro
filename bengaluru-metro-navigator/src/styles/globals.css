@@ -204,13 +204,18 @@
     @apply bg-metro-purple rounded;
   }
 
-  /* Safe area padding for mobile */
+  /* Safe area padding for mobile notch/home-bar */
   .safe-bottom {
     padding-bottom: env(safe-area-inset-bottom, 16px);
   }
 
   .safe-top {
     padding-top: env(safe-area-inset-top, 0);
+  }
+
+  /* Bottom nav safe area — includes bottom nav height + device inset */
+  .safe-area-bottom {
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px));
   }
 
   /* Text truncation */

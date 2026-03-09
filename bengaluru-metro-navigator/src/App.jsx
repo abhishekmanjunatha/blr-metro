@@ -1,85 +1,16 @@
-import { Routes, Route, Link, useLocation } from 'react-router-dom';
+﻿import { Routes, Route, Link } from 'react-router-dom';
 import { useEffect, useState, Suspense, lazy } from 'react';
+import Header from './components/common/Header';
+import Footer from './components/common/Footer';
+import BottomNav from './components/common/BottomNav';
 
-// ===== Inline Loading Screen (no external dependencies) =====
+// ===== Inline Loading Screen =====
 function LoadingScreen() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="w-12 h-12 border-4 border-gray-200 border-t-purple-600 rounded-full animate-spin" />
-      <h1 className="mt-5 text-2xl font-semibold text-purple-700">
-        🚇 Namma Metro Navigator
-      </h1>
-      <p className="mt-2 text-gray-500">Loading your metro guide...</p>
+      <p className="mt-4 text-gray-500 dark:text-gray-400 text-sm font-medium">Loading</p>
     </div>
-  );
-}
-
-// ===== Inline Header (no external dependencies) =====
-function SimpleHeader() {
-  const location = useLocation();
-  const navItems = [
-    { path: '/', label: 'Journey' },
-    { path: '/attractions', label: 'Explore' },
-    { path: '/map', label: 'Map' },
-    { path: '/stations', label: 'Stations' }
-  ];
-  
-  return (
-    <header className="sticky top-0 z-50 bg-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          <img 
-            src={import.meta.env.BASE_URL + 'tinywow_Namma_Metro_Logo_87426246.svg'} 
-            alt="Namma Metro" 
-            className="w-10 h-10 object-contain"
-          />
-          <div className="hidden sm:block">
-            <h1 className="text-lg font-bold text-gray-900">Namma Metro</h1>
-            <p className="text-xs text-gray-500 -mt-1">Navigator</p>
-          </div>
-        </Link>
-        
-        <nav className="flex items-center gap-1">
-          {navItems.map(({ path, label }) => (
-            <Link
-              key={path}
-              to={path}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                location.pathname === path
-                  ? 'bg-purple-100 text-purple-700'
-                  : 'text-gray-600 hover:bg-gray-100'
-              }`}
-            >
-              {label}
-            </Link>
-          ))}
-        </nav>
-      </div>
-    </header>
-  );
-}
-
-// ===== Inline Footer =====
-function SimpleFooter() {
-  return (
-    <footer className="bg-gray-800 text-white py-8 mt-auto">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-center md:text-left">
-            <p className="text-gray-400">© 2026 Namma Metro Navigator</p>
-            <p className="text-sm text-gray-500 mt-1">Your complete guide to Bengaluru Metro</p>
-          </div>
-          <div className="flex gap-6 text-sm">
-            <Link to="/privacy" className="text-gray-400 hover:text-white transition-colors">
-              Privacy Policy
-            </Link>
-            <Link to="/analytics" className="text-gray-400 hover:text-white transition-colors">
-              Analytics
-            </Link>
-          </div>
-        </div>
-      </div>
-    </footer>
   );
 }
 
@@ -87,9 +18,9 @@ function SimpleFooter() {
 function NotFoundPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[50vh] p-5 text-center">
-      <div className="text-7xl font-bold text-purple-200 mb-4">404</div>
-      <h1 className="text-2xl font-bold text-gray-900 mb-2">Page Not Found</h1>
-      <p className="text-gray-600 mb-6">The page you're looking for doesn't exist.</p>
+      <div className="text-7xl font-bold text-purple-200 dark:text-purple-900 mb-4">404</div>
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Page Not Found</h1>
+      <p className="text-gray-600 dark:text-gray-400 mb-6">The page you are looking for does not exist.</p>
       <Link to="/" className="px-6 py-3 bg-purple-700 text-white rounded-lg hover:bg-purple-800 transition-colors">
         Back to Home
       </Link>
@@ -110,22 +41,20 @@ const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 // ===== Main App Component =====
 export default function App() {
   const [ready, setReady] = useState(false);
-  
+
   useEffect(() => {
-    // Small delay to ensure CSS is loaded
     const timer = setTimeout(() => setReady(true), 50);
     return () => clearTimeout(timer);
   }, []);
 
-  if (!ready) {
-    return <LoadingScreen />;
-  }
+  if (!ready) return <LoadingScreen />;
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <SimpleHeader />
-      
-      <main className="flex-1">
+    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900">
+      <Header />
+
+      {/* pb-16 on mobile reserves space above the bottom nav bar */}
+      <main className="flex-1 pb-16 md:pb-0">
         <Suspense fallback={<LoadingScreen />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -140,8 +69,13 @@ export default function App() {
           </Routes>
         </Suspense>
       </main>
-      
-      <SimpleFooter />
+
+      {/* Footer only on desktop; BottomNav handles mobile navigation */}
+      <div className="hidden md:block">
+        <Footer />
+      </div>
+
+      <BottomNav />
     </div>
   );
 }

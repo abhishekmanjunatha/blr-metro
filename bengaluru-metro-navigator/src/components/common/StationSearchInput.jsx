@@ -90,23 +90,27 @@ export default function StationSearchInput({
         <input
           ref={inputRef}
           type="text"
+          inputMode="text"
           value={value}
           onChange={handleInputChange}
           onFocus={(e) => {
             setIsOpen(true);
-            // Select all text on focus for better UX
             e.target.select();
           }}
           placeholder={placeholder}
           disabled={disabled || !isReady}
-          className="input pl-10 pr-10"
+          className="input pl-10 pr-10 text-base"
           autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="words"
+          spellCheck="false"
         />
         
         {value && (
           <button
             onClick={handleClear}
-            className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+            className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 touch-manipulation"
+            aria-label="Clear"
           >
             <X className="h-5 w-5" />
           </button>
@@ -115,20 +119,20 @@ export default function StationSearchInput({
 
       {/* Dropdown */}
       {isOpen && (results.length > 0 || (!value && recentSearches.length > 0)) && (
-        <div className="absolute z-50 w-full mt-1 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 max-h-64 overflow-y-auto">
+        <div className="absolute z-50 w-full mt-1 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 max-h-72 overflow-y-auto overscroll-contain">
           {/* Search Results */}
           {results.length > 0 && results.map((station) => (
             <button
               key={station.id}
               onClick={() => handleSelect(station)}
-              className="w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-left"
+              className="w-full px-4 py-3.5 flex items-center gap-3 hover:bg-gray-50 dark:hover:bg-gray-700 active:bg-gray-100 dark:active:bg-gray-600 transition-colors text-left touch-manipulation"
             >
-              <div className={`w-3 h-3 rounded-full ${getLineColor(station.line)}`} />
+              <div className={`w-3 h-3 rounded-full flex-shrink-0 ${getLineColor(station.line)}`} />
               <div className="flex-1 min-w-0">
-                <p className="font-medium text-gray-900 dark:text-white truncate">
+                <p className="font-medium text-gray-900 dark:text-white truncate text-sm">
                   {station.name}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
+                <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
                   {station.nameKannada} • {station.code}
                 </p>
               </div>
