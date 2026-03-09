@@ -1,0 +1,265 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    /* Enable GPU acceleration for smoother animations */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
+  body {
+    @apply font-body text-gray-800 bg-gray-50 antialiased;
+    @apply dark:bg-gray-900 dark:text-gray-100;
+    min-height: 100vh;
+    overflow-x: hidden;
+    /* Optimize font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Improve touch scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold;
+  }
+
+  /* Focus states */
+  :focus-visible {
+    @apply outline-none ring-2 ring-metro-purple ring-offset-2;
+    @apply dark:ring-offset-gray-900;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-metro-purple text-white;
+  }
+}
+
+/* Component classes */
+@layer components {
+  /* Card styles */
+  .card {
+    @apply bg-white rounded-xl shadow-card p-4 transition-shadow duration-200;
+    @apply dark:bg-gray-800;
+  }
+
+  .card:hover {
+    @apply shadow-card-hover;
+  }
+
+  /* Button styles */
+  .btn {
+    @apply px-6 py-3 rounded-xl font-medium transition-all duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply flex items-center justify-center gap-2;
+    min-height: 44px;
+  }
+
+  .btn-primary {
+    @apply btn bg-metro-purple text-white;
+    @apply hover:bg-metro-purple-600 active:bg-metro-purple-700;
+    @apply focus:ring-metro-purple;
+  }
+
+  .btn-secondary {
+    @apply btn bg-metro-green text-white;
+    @apply hover:bg-metro-green-600 active:bg-metro-green-700;
+    @apply focus:ring-metro-green;
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-metro-purple text-metro-purple bg-transparent;
+    @apply hover:bg-metro-purple hover:text-white;
+    @apply dark:border-metro-purple-400 dark:text-metro-purple-400;
+    @apply dark:hover:bg-metro-purple-400 dark:hover:text-white;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-gray-700;
+    @apply hover:bg-gray-100;
+    @apply dark:text-gray-300 dark:hover:bg-gray-800;
+  }
+
+  /* Input styles */
+  .input {
+    @apply w-full px-4 py-3 rounded-xl border-2 border-gray-200;
+    @apply bg-white text-gray-800 placeholder-gray-400;
+    @apply focus:border-metro-purple focus:ring-0;
+    @apply transition-colors duration-200;
+    @apply dark:bg-gray-800 dark:border-gray-700 dark:text-white;
+    @apply dark:placeholder-gray-500 dark:focus:border-metro-purple-400;
+    min-height: 48px;
+  }
+
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .badge-purple {
+    @apply badge bg-metro-purple/10 text-metro-purple;
+    @apply dark:bg-metro-purple/20 dark:text-metro-purple-300;
+  }
+
+  .badge-green {
+    @apply badge bg-metro-green/10 text-metro-green;
+    @apply dark:bg-metro-green/20 dark:text-metro-green-300;
+  }
+
+  .badge-yellow {
+    @apply badge bg-yellow-100 text-yellow-800;
+    @apply dark:bg-yellow-900/30 dark:text-yellow-300;
+  }
+
+  .badge-pink {
+    @apply badge bg-pink-100 text-pink-800;
+    @apply dark:bg-pink-900/30 dark:text-pink-300;
+  }
+
+  /* Metro line colors */
+  .line-purple {
+    @apply bg-metro-purple text-white;
+  }
+
+  .line-green {
+    @apply bg-metro-green text-white;
+  }
+
+  .line-yellow {
+    @apply bg-metro-yellow text-gray-900;
+  }
+
+  .line-pink {
+    @apply bg-metro-pink text-white;
+  }
+
+  .line-blue {
+    @apply bg-metro-blue text-white;
+  }
+
+  /* Skeleton loader */
+  .skeleton {
+    @apply animate-pulse bg-gray-200 rounded;
+    @apply dark:bg-gray-700;
+  }
+
+  /* Dropdown styles */
+  .dropdown {
+    @apply absolute z-50 w-full mt-1 py-2 bg-white rounded-xl shadow-dropdown;
+    @apply border border-gray-100 max-h-64 overflow-y-auto;
+    @apply dark:bg-gray-800 dark:border-gray-700;
+  }
+
+  .dropdown-item {
+    @apply px-4 py-3 cursor-pointer transition-colors;
+    @apply hover:bg-gray-50 dark:hover:bg-gray-700;
+  }
+
+  .dropdown-item.active {
+    @apply bg-metro-purple/10 text-metro-purple;
+    @apply dark:bg-metro-purple/20 dark:text-metro-purple-300;
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  /* Hide scrollbar but allow scrolling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Custom scrollbar */
+  .scrollbar-custom {
+    scrollbar-width: thin;
+    scrollbar-color: #8B008B #f1f1f1;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    @apply bg-gray-100 rounded;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    @apply bg-metro-purple rounded;
+  }
+
+  /* Safe area padding for mobile */
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+  }
+
+  .safe-top {
+    padding-top: env(safe-area-inset-top, 0);
+  }
+
+  /* Text truncation */
+  .truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .truncate-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Gradient backgrounds */
+  .gradient-purple {
+    background: linear-gradient(135deg, #8B008B 0%, #6B0070 100%);
+  }
+
+  .gradient-green {
+    background: linear-gradient(135deg, #00A86B 0%, #008453 100%);
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, #8B008B 0%, #00A86B 100%);
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white/80 backdrop-blur-lg;
+    @apply dark:bg-gray-900/80;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

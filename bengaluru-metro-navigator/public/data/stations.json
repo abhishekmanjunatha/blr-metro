@@ -1,0 +1,2755 @@
+{
+  "lines": {
+    "purple": {
+      "id": "purple",
+      "name": "Purple Line",
+      "nameKannada": "ನೇರಳೆ ಮಾರ್ಗ",
+      "color": "#8B008B",
+      "length": 42,
+      "totalStations": 37,
+      "direction": "East-West",
+      "operatingHours": {
+        "firstTrain": "05:00",
+        "lastTrain": "23:00"
+      },
+      "frequency": {
+        "peakHours": 4,
+        "offPeak": 6
+      }
+    },
+    "green": {
+      "id": "green",
+      "name": "Green Line",
+      "nameKannada": "ಹಸಿರು ಮಾರ್ಗ",
+      "color": "#00A86B",
+      "length": 30.3,
+      "totalStations": 30,
+      "direction": "North-South",
+      "operatingHours": {
+        "firstTrain": "05:00",
+        "lastTrain": "23:00"
+      },
+      "frequency": {
+        "peakHours": 4,
+        "offPeak": 6
+      }
+    },
+    "yellow": {
+      "id": "yellow",
+      "name": "Yellow Line",
+      "nameKannada": "ಹಳದಿ ಮಾರ್ಗ",
+      "color": "#FFD700",
+      "length": 19.1,
+      "totalStations": 16,
+      "direction": "South-Southeast (RV Road to Bommasandra)",
+      "operatingHours": {
+        "firstTrain": "05:00",
+        "lastTrain": "23:00"
+      },
+      "frequency": {
+        "peakHours": 5,
+        "offPeak": 8
+      },
+      "features": [
+        "Driverless trains",
+        "Double-decker flyover integration"
+      ]
+    },
+    "pink": {
+      "id": "pink",
+      "name": "Pink Line",
+      "nameKannada": "ಗುಲಾಬಿ ಮಾರ್ಗ",
+      "color": "#FF69B4",
+      "status": "under-construction",
+      "direction": "Kalena Agrahara to Nagawara",
+      "expectedCompletion": "2026"
+    }
+  },
+  "stations": [
+    {
+      "id": "whitefield",
+      "code": "WHTF",
+      "name": "Whitefield (Kadugodi)",
+      "nameKannada": "ವೈಟ್‌ಫೀಲ್ಡ್ (ಕಾಡುಗೋಡಿ)",
+      "line": "purple",
+      "order": 1,
+      "chainage": 0,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.995,
+        77.761
+      ],
+      "facilities": [
+        "parking",
+        "elevator",
+        "restroom",
+        "atm"
+      ],
+      "exits": [
+        "East",
+        "West"
+      ],
+      "interchangeWith": null,
+      "sector": "Eastern Technology Corridor",
+      "nearbyAttractions": [
+        "Nexus Shantiniketan Mall",
+        "ITPL",
+        "Sri Sathya Sai Hospital"
+      ]
+    },
+    {
+      "id": "hopefarm-channasandra",
+      "code": "HFC",
+      "name": "Hopefarm Channasandra",
+      "nameKannada": "ಹೋಪ್‌ಫಾರ್ಮ್ ಚನ್ನಸಂದ್ರ",
+      "line": "purple",
+      "order": 2,
+      "chainage": 1.19,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.984,
+        77.752
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "North",
+        "South"
+      ],
+      "interchangeWith": null,
+      "sector": "Eastern Technology Corridor",
+      "nearbyAttractions": [
+        "Hope Farm Junction",
+        "MVJ College of Engineering"
+      ]
+    },
+    {
+      "id": "kadugodi-tree-park",
+      "code": "KDTP",
+      "name": "Kadugodi Tree Park",
+      "nameKannada": "ಕಾಡುಗೋಡಿ ಟ್ರೀ ಪಾರ್ಕ್",
+      "line": "purple",
+      "order": 3,
+      "chainage": 2.11,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.981,
+        77.745
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "East",
+        "West"
+      ],
+      "interchangeWith": null,
+      "sector": "Eastern Technology Corridor",
+      "nearbyAttractions": [
+        "Kadugodi Tree Park"
+      ]
+    },
+    {
+      "id": "pattandur-agrahara",
+      "code": "PTAG",
+      "name": "Pattandur Agrahara",
+      "nameKannada": "ಪಟ್ಟಂದೂರ್ ಅಗ್ರಹಾರ",
+      "line": "purple",
+      "order": 4,
+      "chainage": 3.4,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.978,
+        77.738
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "North",
+        "South"
+      ],
+      "interchangeWith": null,
+      "sector": "Eastern Technology Corridor",
+      "nearbyAttractions": [
+        "ITPL Main Road"
+      ]
+    },
+    {
+      "id": "sri-sathya-sai-hospital",
+      "code": "SSSH",
+      "name": "Sri Sathya Sai Hospital",
+      "nameKannada": "ಶ್ರೀ ಸತ್ಯ ಸಾಯಿ ಆಸ್ಪತ್ರೆ",
+      "line": "purple",
+      "order": 5,
+      "chainage": 4.59,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.975,
+        77.728
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "wheelchair-access"
+      ],
+      "exits": [
+        "East",
+        "West"
+      ],
+      "interchangeWith": null,
+      "sector": "Eastern Technology Corridor",
+      "nearbyAttractions": [
+        "Sri Sathya Sai Super Speciality Hospital",
+        "EPIP Zone"
+      ]
+    },
+    {
+      "id": "nallurhalli",
+      "code": "NALH",
+      "name": "Nallurhalli",
+      "nameKannada": "ನಲ್ಲೂರ್‌ಹಳ್ಳಿ",
+      "line": "purple",
+      "order": 6,
+      "chainage": 5.49,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.973,
+        77.72
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "North",
+        "South"
+      ],
+      "interchangeWith": null,
+      "sector": "Eastern Technology Corridor",
+      "nearbyAttractions": [
+        "Vydehi Hospital",
+        "Whitefield Export Promotion Park"
+      ]
+    },
+    {
+      "id": "kundalahalli",
+      "code": "KUND",
+      "name": "Kundalahalli",
+      "nameKannada": "ಕುಂದಲಹಳ್ಳಿ",
+      "line": "purple",
+      "order": 7,
+      "chainage": 6.45,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.971,
+        77.712
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "atm"
+      ],
+      "exits": [
+        "East",
+        "West"
+      ],
+      "interchangeWith": null,
+      "sector": "Eastern Technology Corridor",
+      "nearbyAttractions": [
+        "SAP Labs",
+        "Accenture",
+        "Brookefield"
+      ]
+    },
+    {
+      "id": "seetharamapalya",
+      "code": "STPY",
+      "name": "Seetharamapalya",
+      "nameKannada": "ಸೀತಾರಾಮಪಾಲ್ಯ",
+      "line": "purple",
+      "order": 8,
+      "chainage": 7.44,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.97,
+        77.705
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "North",
+        "South"
+      ],
+      "interchangeWith": null,
+      "sector": "Eastern Technology Corridor",
+      "nearbyAttractions": [
+        "Graphite India Road junction"
+      ]
+    },
+    {
+      "id": "hoodi",
+      "code": "HODI",
+      "name": "Hoodi",
+      "nameKannada": "ಹೂಡಿ",
+      "line": "purple",
+      "order": 9,
+      "chainage": 8.53,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.99,
+        77.7
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "East",
+        "West"
+      ],
+      "interchangeWith": null,
+      "sector": "Eastern Technology Corridor",
+      "nearbyAttractions": [
+        "Hoodi Railway Halt",
+        "Industrial Area"
+      ]
+    },
+    {
+      "id": "garudacharapalya",
+      "code": "GRCP",
+      "name": "Garudacharapalya",
+      "nameKannada": "ಗರುಡಾಚಾರಪಾಲ್ಯ",
+      "line": "purple",
+      "order": 10,
+      "chainage": 9.91,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.992,
+        77.69
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking"
+      ],
+      "exits": [
+        "North",
+        "South"
+      ],
+      "interchangeWith": null,
+      "sector": "Eastern Technology Corridor",
+      "nearbyAttractions": [
+        "Brigade Metropolis",
+        "Mahadevapura Industrial Area"
+      ]
+    },
+    {
+      "id": "singayyanapalya",
+      "code": "SYPL",
+      "name": "Singayyanapalya",
+      "nameKannada": "ಸಿಂಗಯ್ಯನಪಾಲ್ಯ",
+      "line": "purple",
+      "order": 11,
+      "chainage": 11.21,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.993,
+        77.68
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "atm"
+      ],
+      "exits": [
+        "East",
+        "West"
+      ],
+      "interchangeWith": null,
+      "sector": "Eastern Technology Corridor",
+      "nearbyAttractions": [
+        "Phoenix Marketcity",
+        "VR Bengaluru Mall"
+      ]
+    },
+    {
+      "id": "kr-puram",
+      "code": "KRAM",
+      "name": "Krishnarajapura (KR Puram)",
+      "nameKannada": "ಕೃಷ್ಣರಾಜಪುರ",
+      "line": "purple",
+      "order": 12,
+      "chainage": 12.66,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        13,
+        77.675
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking",
+        "atm"
+      ],
+      "exits": [
+        "North",
+        "South",
+        "Railway"
+      ],
+      "interchangeWith": [
+        "blue"
+      ],
+      "sector": "Eastern Technology Corridor",
+      "nearbyAttractions": [
+        "KR Puram Railway Station",
+        "Tin Factory"
+      ]
+    },
+    {
+      "id": "benniganahalli",
+      "code": "BNGH",
+      "name": "Benniganahalli",
+      "nameKannada": "ಬೆನ್ನಿಗನಹಳ್ಳಿ",
+      "line": "purple",
+      "order": 13,
+      "chainage": 13.9,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.995,
+        77.665
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "East",
+        "West"
+      ],
+      "interchangeWith": null,
+      "sector": "Lifestyle Corridor",
+      "nearbyAttractions": [
+        "RMZ Infinity",
+        "Tin Factory Access"
+      ]
+    },
+    {
+      "id": "baiyappanahalli",
+      "code": "BYPL",
+      "name": "Baiyappanahalli",
+      "nameKannada": "ಬೈಯಪ್ಪನಹಳ್ಳಿ",
+      "line": "purple",
+      "order": 14,
+      "chainage": 15.01,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.991,
+        77.652
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking",
+        "atm"
+      ],
+      "exits": [
+        "North",
+        "South",
+        "Railway"
+      ],
+      "interchangeWith": null,
+      "sector": "Lifestyle Corridor",
+      "nearbyAttractions": [
+        "SMVT Railway Terminal",
+        "Old Madras Road"
+      ]
+    },
+    {
+      "id": "swami-vivekananda-road",
+      "code": "SVKD",
+      "name": "Swami Vivekananda Road",
+      "nameKannada": "ಸ್ವಾಮಿ ವಿವೇಕಾನಂದ ರಸ್ತೆ",
+      "line": "purple",
+      "order": 15,
+      "chainage": 16.55,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.985,
+        77.645
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "East",
+        "West"
+      ],
+      "interchangeWith": null,
+      "sector": "Lifestyle Corridor",
+      "nearbyAttractions": [
+        "RMZ Millenia",
+        "1MG Mall (Lido)"
+      ]
+    },
+    {
+      "id": "indiranagar",
+      "code": "INDN",
+      "name": "Indiranagar",
+      "nameKannada": "ಇಂದಿರಾನಗರ",
+      "line": "purple",
+      "order": 16,
+      "chainage": 17.83,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.978,
+        77.638
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "atm",
+        "parking"
+      ],
+      "exits": [
+        "North",
+        "South"
+      ],
+      "interchangeWith": null,
+      "sector": "Lifestyle Corridor",
+      "nearbyAttractions": [
+        "100ft Road Dining",
+        "Domlur",
+        "ESI Hospital"
+      ],
+      "amenities": {
+        "parking": { "twoWheelerSlots": 400, "fourWheelerSlots": 60 },
+        "restrooms": true,
+        "feedingRooms": false
+      }
+    },
+    {
+      "id": "halasuru",
+      "code": "HLSR",
+      "name": "Halasuru",
+      "nameKannada": "ಹಲಸೂರು",
+      "line": "purple",
+      "order": 17,
+      "chainage": 19.03,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.976,
+        77.625
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "East",
+        "West"
+      ],
+      "interchangeWith": null,
+      "sector": "Lifestyle Corridor",
+      "nearbyAttractions": [
+        "Someshwara Temple",
+        "Ulsoor Lake",
+        "Gurudwara"
+      ]
+    },
+    {
+      "id": "trinity",
+      "code": "TRNY",
+      "name": "Trinity",
+      "nameKannada": "ಟ್ರಿನಿಟಿ",
+      "line": "purple",
+      "order": 18,
+      "chainage": 19.97,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.973,
+        77.616
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "atm"
+      ],
+      "exits": [
+        "North",
+        "South"
+      ],
+      "interchangeWith": null,
+      "sector": "Lifestyle Corridor",
+      "nearbyAttractions": [
+        "Lido Mall",
+        "Taj Hotel",
+        "Kids Kemp"
+      ]
+    },
+    {
+      "id": "mg-road",
+      "code": "MAGR",
+      "name": "M.G. Road",
+      "nameKannada": "ಎಂ.ಜಿ. ರಸ್ತೆ",
+      "line": "purple",
+      "order": 19,
+      "chainage": 20.83,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.975,
+        77.606
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "atm",
+        "food-court"
+      ],
+      "exits": [
+        "Brigade Road",
+        "Church Street",
+        "MG Road"
+      ],
+      "interchangeWith": [
+        "pink"
+      ],
+      "sector": "Lifestyle Corridor",
+      "nearbyAttractions": [
+        "Brigade Road",
+        "Church Street",
+        "Mayo Hall",
+        "St. Marks Cathedral",
+        "Rangoli Metro Art Center"
+      ]
+    },
+    {
+      "id": "cubbon-park",
+      "code": "CBPK",
+      "name": "Cubbon Park",
+      "nameKannada": "ಕಬ್ಬನ್ ಪಾರ್ಕ್",
+      "line": "purple",
+      "order": 20,
+      "chainage": 21.77,
+      "structure": "underground",
+      "platformType": "island",
+      "coordinates": [
+        12.981,
+        77.597
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "atm",
+        "escalator"
+      ],
+      "exits": [
+        "Cubbon Park",
+        "Chinnaswamy Stadium",
+        "Museum"
+      ],
+      "interchangeWith": null,
+      "sector": "Heritage Core",
+      "nearbyAttractions": [
+        "Cubbon Park",
+        "Chinnaswamy Stadium",
+        "Visvesvaraya Museum",
+        "UB City",
+        "Bangalore Palace",
+        "Government Museum"
+      ]
+    },
+    {
+      "id": "vidhana-soudha",
+      "code": "VS",
+      "name": "Vidhana Soudha",
+      "nameKannada": "ವಿಧಾನ ಸೌಧ",
+      "line": "purple",
+      "order": 21,
+      "chainage": 22.79,
+      "structure": "underground",
+      "platformType": "island",
+      "coordinates": [
+        12.979,
+        77.591
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "escalator"
+      ],
+      "exits": [
+        "Vidhana Soudha",
+        "High Court"
+      ],
+      "interchangeWith": null,
+      "sector": "Heritage Core",
+      "nearbyAttractions": [
+        "Vidhana Soudha",
+        "Attara Kacheri (High Court)",
+        "Jawaharlal Nehru Planetarium"
+      ]
+    },
+    {
+      "id": "sir-m-visvesvaraya",
+      "code": "SMV",
+      "name": "Sir M. Visvesvaraya (Central College)",
+      "nameKannada": "ಸರ್ ಎಂ. ವಿಶ್ವೇಶ್ವರಯ್ಯ",
+      "line": "purple",
+      "order": 22,
+      "chainage": 23.65,
+      "structure": "underground",
+      "platformType": "island",
+      "coordinates": [
+        12.973,
+        77.585
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "escalator"
+      ],
+      "exits": [
+        "Central College",
+        "Civil Court"
+      ],
+      "interchangeWith": null,
+      "sector": "Heritage Core",
+      "nearbyAttractions": [
+        "Central College",
+        "Civil Court",
+        "Freedom Park",
+        "Gopalan Legacy Mall"
+      ]
+    },
+    {
+      "id": "majestic",
+      "code": "KGWA",
+      "name": "Nadaprabhu Kempegowda Station (Majestic)",
+      "nameKannada": "ನಾಡಪ್ರಭು ಕೆಂಪೇಗೌಡ ನಿಲ್ದಾಣ (ಮೆಜೆಸ್ಟಿಕ್)",
+      "line": "purple",
+      "order": 23,
+      "chainage": 24.5,
+      "structure": "underground",
+      "platformType": "split-island",
+      "coordinates": [
+        12.975,
+        77.572
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "atm",
+        "escalator",
+        "food-court",
+        "parking"
+      ],
+      "exits": [
+        "KSR Railway",
+        "Bus Terminal",
+        "Gandhinagar"
+      ],
+      "interchangeWith": [
+        "green"
+      ],
+      "sector": "Heritage Core",
+      "nearbyAttractions": [
+        "KSR Railway Station",
+        "KSRTC Bus Terminal",
+        "BMTC Bus Terminal"
+      ],
+      "isInterchange": true,
+      "amenities": {
+        "parking": { "twoWheelerSlots": 500, "fourWheelerSlots": 80 },
+        "restrooms": true,
+        "feedingRooms": true
+      }
+    },
+    {
+      "id": "city-railway-station",
+      "code": "KSR",
+      "name": "Krantivira Sangolli Rayanna (City Railway Station)",
+      "nameKannada": "ಕ್ರಾಂತಿವೀರ ಸಂಗೊಳ್ಳಿ ರಾಯಣ್ಣ",
+      "line": "purple",
+      "order": 24,
+      "chainage": 25.51,
+      "structure": "underground",
+      "platformType": "island",
+      "coordinates": [
+        12.978,
+        77.569
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "escalator"
+      ],
+      "exits": [
+        "Railway Station Back Gate"
+      ],
+      "interchangeWith": null,
+      "sector": "Western Suburbs",
+      "nearbyAttractions": [
+        "KSR Railway Station"
+      ]
+    },
+    {
+      "id": "magadi-road",
+      "code": "MAGD",
+      "name": "Magadi Road",
+      "nameKannada": "ಮಾಗಡಿ ರಸ್ತೆ",
+      "line": "purple",
+      "order": 25,
+      "chainage": 27.04,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.975,
+        77.558
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking"
+      ],
+      "exits": [
+        "North",
+        "South"
+      ],
+      "interchangeWith": null,
+      "sector": "Western Suburbs",
+      "nearbyAttractions": [
+        "Lulu Mall (Global Mall)",
+        "Leprosy Hospital"
+      ]
+    },
+    {
+      "id": "hosahalli",
+      "code": "HOS",
+      "name": "Hosahalli",
+      "nameKannada": "ಹೊಸಹಳ್ಳಿ",
+      "line": "purple",
+      "order": 26,
+      "chainage": 28.15,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.974,
+        77.545
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "East",
+        "West"
+      ],
+      "interchangeWith": null,
+      "sector": "Western Suburbs",
+      "nearbyAttractions": [
+        "Vijayanagar East"
+      ]
+    },
+    {
+      "id": "vijayanagar",
+      "code": "VIJ",
+      "name": "Vijayanagar",
+      "nameKannada": "ವಿಜಯನಗರ",
+      "line": "purple",
+      "order": 27,
+      "chainage": 29.27,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.97,
+        77.535
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "atm",
+        "parking"
+      ],
+      "exits": [
+        "North",
+        "South"
+      ],
+      "interchangeWith": null,
+      "sector": "Western Suburbs",
+      "nearbyAttractions": [
+        "Maruti Mandir",
+        "Vijayanagar Food Street"
+      ]
+    },
+    {
+      "id": "attiguppe",
+      "code": "ATT",
+      "name": "Attiguppe",
+      "nameKannada": "ಅಟ್ಟಿಗುಪ್ಪೆ",
+      "line": "purple",
+      "order": 28,
+      "chainage": 30.59,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.965,
+        77.53
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "East",
+        "West"
+      ],
+      "interchangeWith": null,
+      "sector": "Western Suburbs",
+      "nearbyAttractions": [
+        "Residential Layouts"
+      ]
+    },
+    {
+      "id": "deepanjali-nagar",
+      "code": "DPJN",
+      "name": "Deepanjali Nagar",
+      "nameKannada": "ದೀಪಾಂಜಲಿ ನಗರ",
+      "line": "purple",
+      "order": 29,
+      "chainage": 31.8,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.955,
+        77.525
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "North",
+        "South"
+      ],
+      "interchangeWith": null,
+      "sector": "Western Suburbs",
+      "nearbyAttractions": [
+        "Mysore Road Satellite Bus Stand"
+      ]
+    },
+    {
+      "id": "mysuru-road",
+      "code": "MYRD",
+      "name": "Mysuru Road",
+      "nameKannada": "ಮೈಸೂರು ರಸ್ತೆ",
+      "line": "purple",
+      "order": 30,
+      "chainage": 32.92,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.945,
+        77.518
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking"
+      ],
+      "exits": [
+        "East",
+        "West"
+      ],
+      "interchangeWith": null,
+      "sector": "Western Suburbs",
+      "nearbyAttractions": [
+        "Historic Western Entry point"
+      ]
+    },
+    {
+      "id": "pantharapalya",
+      "code": "PNY",
+      "name": "Pantharapalya (Nayandahalli)",
+      "nameKannada": "ಪಂಥರಾಪಾಲ್ಯ (ನಾಯಂದಹಳ್ಳಿ)",
+      "line": "purple",
+      "order": 31,
+      "chainage": 34.34,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.94,
+        77.51
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "North",
+        "South"
+      ],
+      "interchangeWith": null,
+      "sector": "Western Suburbs",
+      "nearbyAttractions": [
+        "Ring Road Junction",
+        "PES University"
+      ]
+    },
+    {
+      "id": "rajarajeshwari-nagar",
+      "code": "RRNR",
+      "name": "Rajarajeshwari Nagar",
+      "nameKannada": "ರಾಜರಾಜೇಶ್ವರಿ ನಗರ",
+      "line": "purple",
+      "order": 32,
+      "chainage": 35.56,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.93,
+        77.502
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "atm",
+        "parking"
+      ],
+      "exits": [
+        "East",
+        "West"
+      ],
+      "interchangeWith": null,
+      "sector": "Western Suburbs",
+      "nearbyAttractions": [
+        "RR Nagar Arch",
+        "Shrungagiri Temple",
+        "Gopalan Arcade Mall",
+        "Rajarajeshwari Temple"
+      ]
+    },
+    {
+      "id": "jnanabharathi",
+      "code": "JNB",
+      "name": "Jnanabharathi",
+      "nameKannada": "ಜ್ಞಾನಭಾರತಿ",
+      "line": "purple",
+      "order": 33,
+      "chainage": 36.88,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.925,
+        77.495
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking"
+      ],
+      "exits": [
+        "University",
+        "Main Road"
+      ],
+      "interchangeWith": null,
+      "sector": "Western Suburbs",
+      "nearbyAttractions": [
+        "Bangalore University Campus"
+      ]
+    },
+    {
+      "id": "pattanagere",
+      "code": "PTG",
+      "name": "Pattanagere",
+      "nameKannada": "ಪಟ್ಟಣಗೆರೆ",
+      "line": "purple",
+      "order": 34,
+      "chainage": 37.89,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.92,
+        77.488
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "North",
+        "South"
+      ],
+      "interchangeWith": null,
+      "sector": "Western Suburbs",
+      "nearbyAttractions": [
+        "RV College of Engineering"
+      ]
+    },
+    {
+      "id": "kengeri-bus-terminal",
+      "code": "KGBT",
+      "name": "Kengeri Bus Terminal",
+      "nameKannada": "ಕೆಂಗೇರಿ ಬಸ್ ನಿಲ್ದಾಣ",
+      "line": "purple",
+      "order": 35,
+      "chainage": 39.11,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.915,
+        77.48
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking",
+        "bus-terminal"
+      ],
+      "exits": [
+        "Bus Terminal",
+        "Main Road"
+      ],
+      "interchangeWith": null,
+      "sector": "Western Suburbs",
+      "nearbyAttractions": [
+        "Kengeri TTMC",
+        "Wonderla (Shuttle pickup point)"
+      ]
+    },
+    {
+      "id": "kengeri",
+      "code": "KEN",
+      "name": "Kengeri",
+      "nameKannada": "ಕೆಂಗೇರಿ",
+      "line": "purple",
+      "order": 36,
+      "chainage": 39.92,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.91,
+        77.475
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "East",
+        "West"
+      ],
+      "interchangeWith": null,
+      "sector": "Western Suburbs",
+      "nearbyAttractions": [
+        "Kengeri Satellite Town"
+      ]
+    },
+    {
+      "id": "challaghatta",
+      "code": "CHGA",
+      "name": "Challaghatta",
+      "nameKannada": "ಚಲ್ಲಘಟ್ಟ",
+      "line": "purple",
+      "order": 37,
+      "chainage": 42,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.905,
+        77.465
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking"
+      ],
+      "exits": [
+        "Terminal"
+      ],
+      "interchangeWith": null,
+      "sector": "Western Suburbs",
+      "nearbyAttractions": [
+        "Western Terminus",
+        "Rajarajeshwari Medical College"
+      ],
+      "isTerminus": true
+    },
+    {
+      "id": "madavara",
+      "code": "MADV",
+      "name": "Madavara",
+      "nameKannada": "ಮಾದಾವರ",
+      "line": "green",
+      "order": 1,
+      "chainage": 0,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        13.055,
+        77.47
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking"
+      ],
+      "exits": [
+        "BIEC",
+        "Main Road"
+      ],
+      "interchangeWith": null,
+      "sector": "Industrial North",
+      "nearbyAttractions": [
+        "BIEC (Bangalore International Exhibition Centre)"
+      ],
+      "isTerminus": true
+    },
+    {
+      "id": "chikkabidarakallu",
+      "code": "CBK",
+      "name": "Chikkabidarakallu",
+      "nameKannada": "ಚಿಕ್ಕಬಿದರಕಲ್ಲು",
+      "line": "green",
+      "order": 2,
+      "chainage": 1.15,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        13.045,
+        77.48
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "North",
+        "South"
+      ],
+      "interchangeWith": null,
+      "sector": "Industrial North",
+      "nearbyAttractions": [
+        "Jindal Naturecure Institute"
+      ]
+    },
+    {
+      "id": "manjunathanagar",
+      "code": "MNJN",
+      "name": "Manjunathanagar",
+      "nameKannada": "ಮಂಜುನಾಥನಗರ",
+      "line": "green",
+      "order": 3,
+      "chainage": 2,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        13.038,
+        77.49
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "East",
+        "West"
+      ],
+      "interchangeWith": null,
+      "sector": "Industrial North",
+      "nearbyAttractions": [
+        "Residential Area"
+      ]
+    },
+    {
+      "id": "nagasandra",
+      "code": "NGS",
+      "name": "Nagasandra",
+      "nameKannada": "ನಾಗಸಂದ್ರ",
+      "line": "green",
+      "order": 4,
+      "chainage": 2.73,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        13.03,
+        77.5
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking"
+      ],
+      "exits": [
+        "IKEA Access",
+        "Industrial"
+      ],
+      "interchangeWith": null,
+      "sector": "Industrial North",
+      "nearbyAttractions": [
+        "IKEA",
+        "Manufacturing Hub"
+      ]
+    },
+    {
+      "id": "dasarahalli",
+      "code": "DAS",
+      "name": "Dasarahalli",
+      "nameKannada": "ದಾಸರಹಳ್ಳಿ",
+      "line": "green",
+      "order": 5,
+      "chainage": 3.77,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        13.025,
+        77.51
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "North",
+        "South"
+      ],
+      "interchangeWith": null,
+      "sector": "Industrial North",
+      "nearbyAttractions": [
+        "Peenya Connectivity"
+      ]
+    },
+    {
+      "id": "jalahalli",
+      "code": "JAL",
+      "name": "Jalahalli",
+      "nameKannada": "ಜಲಹಳ್ಳಿ",
+      "line": "green",
+      "order": 6,
+      "chainage": 4.64,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        13.02,
+        77.52
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "East",
+        "West"
+      ],
+      "interchangeWith": null,
+      "sector": "Industrial North",
+      "nearbyAttractions": [
+        "Air Force Station Jalahalli"
+      ]
+    },
+    {
+      "id": "peenya-industry",
+      "code": "PNYI",
+      "name": "Peenya Industry",
+      "nameKannada": "ಪೀಣ್ಯ ಕೈಗಾರಿಕೆ",
+      "line": "green",
+      "order": 7,
+      "chainage": 5.51,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        13.015,
+        77.525
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking"
+      ],
+      "exits": [
+        "Industrial Area"
+      ],
+      "interchangeWith": null,
+      "sector": "Industrial North",
+      "nearbyAttractions": [
+        "Peenya Industrial Area"
+      ]
+    },
+    {
+      "id": "peenya",
+      "code": "PNY",
+      "name": "Peenya",
+      "nameKannada": "ಪೀಣ್ಯ",
+      "line": "green",
+      "order": 8,
+      "chainage": 6.38,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        13.01,
+        77.53
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "North",
+        "South"
+      ],
+      "interchangeWith": null,
+      "sector": "Industrial North",
+      "nearbyAttractions": [
+        "Industrial Area"
+      ]
+    },
+    {
+      "id": "goraguntepalya",
+      "code": "GGP",
+      "name": "Goraguntepalya",
+      "nameKannada": "ಗೊರಗುಂಟೆಪಾಲ್ಯ",
+      "line": "green",
+      "order": 9,
+      "chainage": 7.25,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        13.005,
+        77.535
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "atm"
+      ],
+      "exits": [
+        "Ring Road",
+        "Yeshwantpur"
+      ],
+      "interchangeWith": null,
+      "sector": "Industrial North",
+      "nearbyAttractions": [
+        "Outer Ring Road Junction",
+        "Taj Yeshwantpur"
+      ]
+    },
+    {
+      "id": "yeshwanthpur",
+      "code": "YPM",
+      "name": "Yeshwanthpur",
+      "nameKannada": "ಯಶವಂತಪುರ",
+      "line": "green",
+      "order": 10,
+      "chainage": 8.11,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        13,
+        77.545
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking",
+        "atm"
+      ],
+      "exits": [
+        "Railway Station",
+        "Market"
+      ],
+      "interchangeWith": null,
+      "sector": "Industrial North",
+      "nearbyAttractions": [
+        "Yeshwanthpur Railway Station",
+        "Yeshwanthpur Market",
+        "Vaishnavi Sapphire Mall"
+      ]
+    },
+    {
+      "id": "sandal-soap-factory",
+      "code": "SSF",
+      "name": "Sandal Soap Factory",
+      "nameKannada": "ಗಂಧದ ಸಾಬೂನು ಕಾರ್ಖಾನೆ",
+      "line": "green",
+      "order": 11,
+      "chainage": 9.16,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.998,
+        77.552
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "atm"
+      ],
+      "exits": [
+        "Orion Mall",
+        "WTC"
+      ],
+      "interchangeWith": null,
+      "sector": "Industrial North",
+      "nearbyAttractions": [
+        "Orion Mall",
+        "World Trade Center",
+        "ISKCON Temple",
+        "IISc"
+      ]
+    },
+    {
+      "id": "mahalakshmi",
+      "code": "MHL",
+      "name": "Mahalakshmi",
+      "nameKannada": "ಮಹಾಲಕ್ಷ್ಮಿ",
+      "line": "green",
+      "order": 12,
+      "chainage": 10.03,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.992,
+        77.558
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "Temple",
+        "Main Road"
+      ],
+      "interchangeWith": null,
+      "sector": "Industrial North",
+      "nearbyAttractions": [
+        "ISKCON Temple",
+        "Mahalakshmi Temple"
+      ]
+    },
+    {
+      "id": "rajajinagar",
+      "code": "RJN",
+      "name": "Rajajinagar",
+      "nameKannada": "ರಾಜಾಜಿನಗರ",
+      "line": "green",
+      "order": 13,
+      "chainage": 10.9,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.988,
+        77.562
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "atm"
+      ],
+      "exits": [
+        "ESI Hospital",
+        "Ram Mandir"
+      ],
+      "interchangeWith": null,
+      "sector": "Industrial North",
+      "nearbyAttractions": [
+        "ESI Hospital",
+        "Ram Mandir"
+      ]
+    },
+    {
+      "id": "mahakavi-kuvempu-road",
+      "code": "MKR",
+      "name": "Mahakavi Kuvempu Road",
+      "nameKannada": "ಮಹಾಕವಿ ಕುವೆಂಪು ರಸ್ತೆ",
+      "line": "green",
+      "order": 14,
+      "chainage": 11.76,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.985,
+        77.568
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "East",
+        "West"
+      ],
+      "interchangeWith": null,
+      "sector": "Industrial North",
+      "nearbyAttractions": [
+        "Malleshwaram West"
+      ]
+    },
+    {
+      "id": "srirampura",
+      "code": "SRP",
+      "name": "Srirampura",
+      "nameKannada": "ಶ್ರೀರಾಂಪುರ",
+      "line": "green",
+      "order": 15,
+      "chainage": 12.81,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.982,
+        77.572
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "8th Cross",
+        "Main Road"
+      ],
+      "interchangeWith": null,
+      "sector": "Industrial North",
+      "nearbyAttractions": [
+        "Malleshwaram 8th Cross Shopping"
+      ]
+    },
+    {
+      "id": "mantri-square-sampige-road",
+      "code": "SPGD",
+      "name": "Mantri Square Sampige Road",
+      "nameKannada": "ಮಂತ್ರಿ ಸ್ಕ್ವೇರ್ ಸಂಪಿಗೆ ರಸ್ತೆ",
+      "line": "green",
+      "order": 16,
+      "chainage": 13.76,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.99,
+        77.57
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "atm",
+        "food-court"
+      ],
+      "exits": [
+        "Mall",
+        "Market",
+        "Sankey Tank"
+      ],
+      "interchangeWith": null,
+      "sector": "Industrial North",
+      "nearbyAttractions": [
+        "Mantri Square Mall",
+        "Malleshwaram Market",
+        "Sankey Tank",
+        "Karnataka Chitrakala Parishath",
+        "Gandhi Bhavan"
+      ],
+      "amenities": {
+        "parking": { "twoWheelerSlots": 750, "fourWheelerSlots": 100 },
+        "restrooms": true,
+        "feedingRooms": false
+      }
+    },
+    {
+      "id": "majestic-green",
+      "code": "KGWAG",
+      "name": "Nadaprabhu Kempegowda Station (Majestic)",
+      "nameKannada": "ನಾಡಪ್ರಭು ಕೆಂಪೇಗೌಡ ನಿಲ್ದಾಣ (ಮೆಜೆಸ್ಟಿಕ್)",
+      "line": "green",
+      "order": 17,
+      "chainage": 15.5,
+      "structure": "underground",
+      "platformType": "island",
+      "coordinates": [
+        12.975,
+        77.572
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "atm",
+        "escalator",
+        "food-court",
+        "parking"
+      ],
+      "exits": [
+        "KSR Railway",
+        "Bus Terminal",
+        "Gandhinagar"
+      ],
+      "interchangeWith": [
+        "purple"
+      ],
+      "sector": "Heritage Core",
+      "nearbyAttractions": [
+        "KSR Railway Station",
+        "KSRTC Bus Terminal",
+        "BMTC Bus Terminal"
+      ],
+      "isInterchange": true,
+      "amenities": {
+        "parking": { "twoWheelerSlots": 500, "fourWheelerSlots": 80 },
+        "restrooms": true,
+        "feedingRooms": true
+      }
+    },
+    {
+      "id": "national-college",
+      "code": "NCL",
+      "name": "National College",
+      "nameKannada": "ನ್ಯಾಷನಲ್ ಕಾಲೇಜ್",
+      "line": "green",
+      "order": 20,
+      "chainage": 18.23,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.95,
+        77.575
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "Food Street",
+        "Ramakrishna Math"
+      ],
+      "interchangeWith": null,
+      "sector": "Cultural South",
+      "nearbyAttractions": [
+        "VV Puram Food Street",
+        "Ramakrishna Math",
+        "Bull Temple",
+        "Dodda Ganesha Temple",
+        "Gandhi Bazaar",
+        "MN Krishna Rao Park",
+        "Bugle Rock Park",
+        "Gavi Gangadhareshwara Temple"
+      ]
+    },
+    {
+      "id": "lalbagh",
+      "code": "LBG",
+      "name": "Lalbagh",
+      "nameKannada": "ಲಾಲ್‌ಬಾಗ್",
+      "line": "green",
+      "order": 21,
+      "chainage": 19.32,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.946,
+        77.58
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking"
+      ],
+      "exits": [
+        "West Gate",
+        "Main Road"
+      ],
+      "interchangeWith": null,
+      "sector": "Cultural South",
+      "nearbyAttractions": [
+        "Lalbagh Botanical Garden",
+        "MTR Restaurant",
+        "Urvashi Theatre"
+      ]
+    },
+    {
+      "id": "south-end-circle",
+      "code": "SEC",
+      "name": "South End Circle",
+      "nameKannada": "ಸೌತ್ ಎಂಡ್ ಸರ್ಕಲ್",
+      "line": "green",
+      "order": 22,
+      "chainage": 20.42,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.938,
+        77.582
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "Ranga Shankara",
+        "Yediyur"
+      ],
+      "interchangeWith": null,
+      "sector": "Cultural South",
+      "nearbyAttractions": [
+        "Ranga Shankara Theatre",
+        "Yediyur Lake",
+        "NIMHANS"
+      ]
+    },
+    {
+      "id": "jayanagar",
+      "code": "JYN",
+      "name": "Jayanagar",
+      "nameKannada": "ಜಯನಗರ",
+      "line": "green",
+      "order": 23,
+      "chainage": 21.51,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.93,
+        77.583
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "atm",
+        "parking"
+      ],
+      "exits": [
+        "4th Block",
+        "Shopping Complex"
+      ],
+      "interchangeWith": null,
+      "sector": "Cultural South",
+      "nearbyAttractions": [
+        "Jayanagar 4th Block Shopping",
+        "Ranadheera Kanteerava Park",
+        "Nexus Mall (Forum)"
+      ]
+    },
+    {
+      "id": "rv-road",
+      "code": "RV",
+      "name": "Rashtreeya Vidyalaya Road",
+      "nameKannada": "ರಾಷ್ಟ್ರೀಯ ವಿದ್ಯಾಲಯ ರಸ್ತೆ",
+      "line": "green",
+      "order": 24,
+      "chainage": 22.6,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.922,
+        77.585
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "escalator"
+      ],
+      "exits": [
+        "Yellow Line",
+        "RV Road"
+      ],
+      "interchangeWith": [
+        "yellow"
+      ],
+      "sector": "Cultural South",
+      "nearbyAttractions": [
+        "RV Teachers College"
+      ],
+      "isInterchange": true,
+      "amenities": {
+        "parking": { "twoWheelerSlots": 200, "fourWheelerSlots": 30 },
+        "restrooms": true,
+        "feedingRooms": false
+      },
+      "interchangeDetails": {
+        "fromPlatform": "Level 2 (Green Line)",
+        "toPlatform": "Level 3 (Yellow Line)",
+        "walkingTimeMinutes": 3
+      }
+    },
+    {
+      "id": "banashankari",
+      "code": "BSK",
+      "name": "Banashankari",
+      "nameKannada": "ಬನಶಂಕರಿ",
+      "line": "green",
+      "order": 25,
+      "chainage": 23.44,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.915,
+        77.572
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking",
+        "bus-terminal"
+      ],
+      "exits": [
+        "Temple",
+        "Bus Terminal"
+      ],
+      "interchangeWith": null,
+      "sector": "Cultural South",
+      "nearbyAttractions": [
+        "Banashankari Amma Temple",
+        "Banashankari Bus Terminal"
+      ]
+    },
+    {
+      "id": "jp-nagar",
+      "code": "JPN",
+      "name": "Jayaprakash Nagar (JP Nagar)",
+      "nameKannada": "ಜಯಪ್ರಕಾಶ ನಗರ",
+      "line": "green",
+      "order": 26,
+      "chainage": 24.29,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.91,
+        77.57
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "atm"
+      ],
+      "exits": [
+        "Sarakki",
+        "Main Road"
+      ],
+      "interchangeWith": null,
+      "sector": "Cultural South",
+      "nearbyAttractions": [
+        "Sarakki Market",
+        "Vega City Mall",
+        "IIM Bangalore Access"
+      ]
+    },
+    {
+      "id": "yelachenahalli",
+      "code": "YEL",
+      "name": "Yelachenahalli",
+      "nameKannada": "ಯಲಚೇನಹಳ್ಳಿ",
+      "line": "green",
+      "order": 27,
+      "chainage": 25.05,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.9,
+        77.565
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "Kanakapura Road"
+      ],
+      "interchangeWith": null,
+      "sector": "Cultural South",
+      "nearbyAttractions": [
+        "Kanakapura Road Start"
+      ],
+      "amenities": {
+        "parking": { "twoWheelerSlots": 350, "fourWheelerSlots": 50 },
+        "restrooms": true,
+        "feedingRooms": false
+      }
+    },
+    {
+      "id": "konanakunte-cross",
+      "code": "KNXC",
+      "name": "Konanakunte Cross",
+      "nameKannada": "ಕೊಣನಕುಂಟೆ ಕ್ರಾಸ್",
+      "line": "green",
+      "order": 28,
+      "chainage": 26.06,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.89,
+        77.56
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking"
+      ],
+      "exits": [
+        "Mall",
+        "ISKCON"
+      ],
+      "interchangeWith": null,
+      "sector": "Cultural South",
+      "nearbyAttractions": [
+        "Forum Mall (Prestige Falcon City)",
+        "ISKCON Vaikunta Hill"
+      ]
+    },
+    {
+      "id": "doddakallasandra",
+      "code": "DDK",
+      "name": "Doddakallasandra",
+      "nameKannada": "ದೊಡ್ಡಕಲ್ಲಸಂದ್ರ",
+      "line": "green",
+      "order": 29,
+      "chainage": 26.99,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.885,
+        77.555
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "East",
+        "West"
+      ],
+      "interchangeWith": null,
+      "sector": "Cultural South",
+      "nearbyAttractions": [
+        "Residential Area"
+      ]
+    },
+    {
+      "id": "vajarahalli",
+      "code": "VJH",
+      "name": "Vajarahalli",
+      "nameKannada": "ವಜ್ರಹಳ್ಳಿ",
+      "line": "green",
+      "order": 30,
+      "chainage": 28,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.875,
+        77.545
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "Turahalli",
+        "Main Road"
+      ],
+      "interchangeWith": null,
+      "sector": "Cultural South",
+      "nearbyAttractions": [
+        "Turahalli Forest"
+      ]
+    },
+    {
+      "id": "thalaghattapura",
+      "code": "TGP",
+      "name": "Thalaghattapura",
+      "nameKannada": "ತಾಲಘಟ್ಟಪುರ",
+      "line": "green",
+      "order": 31,
+      "chainage": 28.93,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.87,
+        77.535
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking"
+      ],
+      "exits": [
+        "Nice Road"
+      ],
+      "interchangeWith": null,
+      "sector": "Cultural South",
+      "nearbyAttractions": [
+        "Nice Road Junction"
+      ]
+    },
+    {
+      "id": "silk-institute",
+      "code": "SLK",
+      "name": "Silk Institute",
+      "nameKannada": "ಸಿಲ್ಕ್ ಇನ್ಸ್ಟಿಟ್ಯೂಟ್",
+      "line": "green",
+      "order": 32,
+      "chainage": 30.3,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.863,
+        77.509
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking"
+      ],
+      "exits": [
+        "Terminal",
+        "Art of Living"
+      ],
+      "interchangeWith": null,
+      "sector": "Cultural South",
+      "nearbyAttractions": [
+        "Art of Living Ashram"
+      ],
+      "isTerminus": true
+    },
+    {
+      "id": "rv-road-yellow",
+      "code": "RVY",
+      "name": "Rashtreeya Vidyalaya Road",
+      "nameKannada": "ರಾಷ್ಟ್ರೀಯ ವಿದ್ಯಾಲಯ ರಸ್ತೆ",
+      "line": "yellow",
+      "order": 0,
+      "chainage": 0,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.9344,
+        77.5844
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "interchange"
+      ],
+      "exits": [
+        "RV Road",
+        "Green Line"
+      ],
+      "interchangeWith": [
+        "green"
+      ],
+      "sector": "South Bangalore",
+      "nearbyAttractions": [
+        "RV College of Engineering",
+        "Ragigudda Temple"
+      ],
+      "isInterchange": true,
+      "amenities": {
+        "parking": { "twoWheelerSlots": 200, "fourWheelerSlots": 30 },
+        "restrooms": true,
+        "feedingRooms": false
+      },
+      "interchangeDetails": {
+        "fromPlatform": "Level 3 (Yellow Line)",
+        "toPlatform": "Level 2 (Green Line)",
+        "walkingTimeMinutes": 3
+      }
+    },
+    {
+      "id": "ragigudda",
+      "code": "RAGI",
+      "name": "Ragigudda",
+      "nameKannada": "ರಾಗಿಗುಡ್ಡ",
+      "line": "yellow",
+      "order": 1,
+      "chainage": 1.36,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.918,
+        77.59
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "Temple",
+        "Main Road"
+      ],
+      "interchangeWith": null,
+      "sector": "Tech Corridor",
+      "nearbyAttractions": [
+        "Ragigudda Anjaneya Temple"
+      ]
+    },
+    {
+      "id": "jayadeva-hospital",
+      "code": "JDH",
+      "name": "Jayadeva Hospital",
+      "nameKannada": "ಜಯದೇವ ಆಸ್ಪತ್ರೆ",
+      "line": "yellow",
+      "order": 2,
+      "chainage": 2.4,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.915,
+        77.6
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "escalator",
+        "wheelchair-access"
+      ],
+      "exits": [
+        "Hospital",
+        "Pink Line"
+      ],
+      "interchangeWith": [
+        "pink"
+      ],
+      "sector": "Tech Corridor",
+      "nearbyAttractions": [
+        "Jayadeva Cardiology Institute"
+      ],
+      "isInterchange": true
+    },
+    {
+      "id": "btm-layout",
+      "code": "BTM",
+      "name": "BTM Layout",
+      "nameKannada": "ಬಿಟಿಎಂ ಲೇಔಟ್",
+      "line": "yellow",
+      "order": 3,
+      "chainage": 3.3,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.915,
+        77.61
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "atm"
+      ],
+      "exits": [
+        "Madiwala",
+        "Main Road"
+      ],
+      "interchangeWith": null,
+      "sector": "Tech Corridor",
+      "nearbyAttractions": [
+        "Madiwala Lake"
+      ]
+    },
+    {
+      "id": "central-silk-board",
+      "code": "CSB",
+      "name": "Central Silk Board",
+      "nameKannada": "ಸೆಂಟ್ರಲ್ ಸಿಲ್ಕ್ ಬೋರ್ಡ್",
+      "line": "yellow",
+      "order": 4,
+      "chainage": 4.75,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.917,
+        77.62
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "escalator",
+        "parking"
+      ],
+      "exits": [
+        "Blue Line",
+        "HSR Layout"
+      ],
+      "interchangeWith": [
+        "blue"
+      ],
+      "sector": "Tech Corridor",
+      "nearbyAttractions": [
+        "HSR Layout Gateway",
+        "St. John's Medical College"
+      ],
+      "isInterchange": true
+    },
+    {
+      "id": "bommanahalli",
+      "code": "HSRL",
+      "name": "Bommanahalli",
+      "nameKannada": "ಬೊಮ್ಮನಹಳ್ಳಿ",
+      "line": "yellow",
+      "order": 5,
+      "chainage": 6.44,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.908,
+        77.625
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "Industrial",
+        "Main Road"
+      ],
+      "interchangeWith": null,
+      "sector": "Tech Corridor",
+      "nearbyAttractions": [
+        "Industrial/Garment Hub"
+      ]
+    },
+    {
+      "id": "hongasandra",
+      "code": "OFDC",
+      "name": "Hongasandra",
+      "nameKannada": "ಹೊಂಗಸಂದ್ರ",
+      "line": "yellow",
+      "order": 6,
+      "chainage": 8.01,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.898,
+        77.635
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "North",
+        "South"
+      ],
+      "interchangeWith": null,
+      "sector": "Tech Corridor",
+      "nearbyAttractions": [
+        "Oxford Engineering College"
+      ]
+    },
+    {
+      "id": "kudlu-gate",
+      "code": "MSRN",
+      "name": "Kudlu Gate",
+      "nameKannada": "ಕುದ್ಲು ಗೇಟ್",
+      "line": "yellow",
+      "order": 7,
+      "chainage": 9.46,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.888,
+        77.645
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "HSR Extension"
+      ],
+      "interchangeWith": null,
+      "sector": "Tech Corridor",
+      "nearbyAttractions": [
+        "HSR Extension Access"
+      ]
+    },
+    {
+      "id": "singasandra",
+      "code": "CKBR",
+      "name": "Singasandra",
+      "nameKannada": "ಸಿಂಗಸಂದ್ರ",
+      "line": "yellow",
+      "order": 8,
+      "chainage": 11.27,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.878,
+        77.655
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "East",
+        "West"
+      ],
+      "interchangeWith": null,
+      "sector": "Tech Corridor",
+      "nearbyAttractions": [
+        "Keys Hotel",
+        "Automotive Showrooms"
+      ]
+    },
+    {
+      "id": "hosa-road",
+      "code": "BSRD",
+      "name": "Hosa Road",
+      "nameKannada": "ಹೊಸ ರಸ್ತೆ",
+      "line": "yellow",
+      "order": 9,
+      "chainage": 12.89,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.87,
+        77.66
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking"
+      ],
+      "exits": [
+        "Jail Road",
+        "Sarjapur"
+      ],
+      "interchangeWith": null,
+      "sector": "Tech Corridor",
+      "nearbyAttractions": [
+        "Junction to Jail Road/Sarjapur",
+        "Kaikondrahalli Lake"
+      ]
+    },
+    {
+      "id": "beratena-agrahara",
+      "code": "HOSR",
+      "name": "Beratena Agrahara",
+      "nameKannada": "ಬೆರಟೇನ ಅಗ್ರಹಾರ",
+      "line": "yellow",
+      "order": 10,
+      "chainage": 14.4,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.86,
+        77.665
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "Tech Parks",
+        "Showrooms"
+      ],
+      "interchangeWith": null,
+      "sector": "Tech Corridor",
+      "nearbyAttractions": [
+        "Luxury Car Showrooms",
+        "Tech Parks"
+      ]
+    },
+    {
+      "id": "electronic-city",
+      "code": "ETCT",
+      "name": "Electronic City",
+      "nameKannada": "ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಸಿಟಿ",
+      "line": "yellow",
+      "order": 11,
+      "chainage": 15.8,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.85,
+        77.675
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking",
+        "atm",
+        "food-court"
+      ],
+      "exits": [
+        "Infosys",
+        "Wipro",
+        "Phase 1"
+      ],
+      "interchangeWith": null,
+      "sector": "Tech Corridor",
+      "nearbyAttractions": [
+        "Electronic City Phase 1",
+        "Velankani Tech Park"
+      ]
+    },
+    {
+      "id": "infosys-foundation-konappana-agrahara",
+      "code": "ECTN",
+      "name": "Infosys Foundation Konappana Agrahara",
+      "nameKannada": "ಇನ್ಫೋಸಿಸ್ ಫೌಂಡೇಷನ್ ಕೋನಪ್ಪನ ಅಗ್ರಹಾರ",
+      "line": "yellow",
+      "order": 12,
+      "chainage": 16.66,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.84,
+        77.68
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "Phase 2",
+        "Infosys Foundation"
+      ],
+      "interchangeWith": null,
+      "sector": "Tech Corridor",
+      "nearbyAttractions": [
+        "Infosys Campus",
+        "Wipro Campus",
+        "Electronic City Phase 2"
+      ]
+    },
+    {
+      "id": "huskur-road",
+      "code": "HSKR",
+      "name": "Huskur Road",
+      "nameKannada": "ಹುಸ್ಕೂರು ರಸ್ತೆ",
+      "line": "yellow",
+      "order": 13,
+      "chainage": 17.45,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.83,
+        77.685
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "Lake View"
+      ],
+      "interchangeWith": null,
+      "sector": "Tech Corridor",
+      "nearbyAttractions": [
+        "Huskur Lake View Point"
+      ]
+    },
+    {
+      "id": "biocon-hebbagodi",
+      "code": "HBGI",
+      "name": "Biocon Hebbagodi",
+      "nameKannada": "ಬಯೋಕಾನ್ ಹೆಬ್ಬಗೋಡಿ",
+      "line": "yellow",
+      "order": 14,
+      "chainage": 18.18,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.82,
+        77.688
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking"
+      ],
+      "exits": [
+        "Biocon",
+        "Industrial"
+      ],
+      "interchangeWith": null,
+      "sector": "Tech Corridor",
+      "nearbyAttractions": [
+        "Biocon Corporate Campus",
+        "Industrial Area"
+      ]
+    },
+    {
+      "id": "delta-electronics-bommasandra",
+      "code": "BMSD",
+      "name": "Delta Electronics Bommasandra",
+      "nameKannada": "ಡೆಲ್ಟಾ ಎಲೆಕ್ಟ್ರಾನಿಕ್ಸ್ ಬೊಮ್ಮಸಂದ್ರ",
+      "line": "yellow",
+      "order": 15,
+      "chainage": 19.1,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.815,
+        77.69
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "parking"
+      ],
+      "exits": [
+        "Terminal",
+        "Narayana Health"
+      ],
+      "interchangeWith": null,
+      "sector": "Tech Corridor",
+      "nearbyAttractions": [
+        "Delta Electronics India Pvt. Ltd.",
+        "Narayana Health City"
+      ],
+      "isTerminus": true
+    },
+    {
+      "id": "kr-market",
+      "code": "KRM",
+      "name": "KR Market",
+      "nameKannada": "ಕೆ.ಆರ್ ಮಾರುಕಟ್ಟೆ",
+      "line": "green",
+      "order": 19,
+      "chainage": 17.14,
+      "structure": "elevated",
+      "platformType": "side",
+      "coordinates": [
+        12.962,
+        77.578
+      ],
+      "facilities": [
+        "elevator",
+        "restroom"
+      ],
+      "exits": [
+        "Market",
+        "Fort"
+      ],
+      "interchangeWith": null,
+      "sector": "Cultural South",
+      "nearbyAttractions": [
+        "Tipu Sultan's Summer Palace",
+        "Bangalore Fort",
+        "Victoria Hospital",
+        "Kote Venkataramana Temple",
+        "Dharmaraya Swamy Temple"
+      ]
+    },
+    {
+      "id": "chickpete",
+      "code": "CKP",
+      "name": "Chickpete",
+      "nameKannada": "ಚಿಕ್ಕಪೇಟೆ",
+      "line": "green",
+      "order": 18,
+      "chainage": 16.59,
+      "structure": "underground",
+      "platformType": "island",
+      "coordinates": [
+        12.968,
+        77.575
+      ],
+      "facilities": [
+        "elevator",
+        "restroom",
+        "escalator"
+      ],
+      "exits": [
+        "Market",
+        "Avenue Road"
+      ],
+      "interchangeWith": null,
+      "sector": "Cultural South",
+      "nearbyAttractions": [
+        "Chickpete Market",
+        "Ranganathaswamy Temple",
+        "Jamia Masjid"
+      ]
+    }
+  ],
+  "interchanges": [
+    {
+      "stationId": "majestic",
+      "stationIds": {
+        "purple": "majestic",
+        "green": "majestic-green"
+      },
+      "name": "Nadaprabhu Kempegowda Station (Majestic)",
+      "lines": [
+        "purple",
+        "green"
+      ],
+      "walkingTime": 5,
+      "description": "Asia's largest underground metro station. Purple Line on lower level, Green Line on upper level."
+    },
+    {
+      "stationId": "rv-road",
+      "stationIds": {
+        "green": "rv-road",
+        "yellow": "rv-road-yellow"
+      },
+      "name": "Rashtreeya Vidyalaya Road",
+      "lines": [
+        "green",
+        "yellow"
+      ],
+      "walkingTime": 3,
+      "description": "Interchange between Green Line and Yellow Line"
+    },
+    {
+      "stationId": "jayadeva-hospital",
+      "name": "Jayadeva Hospital",
+      "lines": [
+        "yellow",
+        "pink"
+      ],
+      "walkingTime": 5,
+      "description": "5-level infrastructure with Yellow Line elevated viaduct at top"
+    },
+    {
+      "stationId": "central-silk-board",
+      "name": "Central Silk Board",
+      "lines": [
+        "yellow",
+        "blue"
+      ],
+      "walkingTime": 4,
+      "description": "Major interchange with double-decker flyover integration"
+    },
+    {
+      "stationId": "kr-puram",
+      "name": "Krishnarajapura (KR Puram)",
+      "lines": [
+        "purple",
+        "blue"
+      ],
+      "walkingTime": 4,
+      "description": "Future interchange with Airport Line"
+    },
+    {
+      "stationId": "mg-road",
+      "name": "M.G. Road",
+      "lines": [
+        "purple",
+        "pink"
+      ],
+      "walkingTime": 5,
+      "description": "New underground Pink Line station connects with existing elevated Purple Line"
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "fareStructure": {
+    "currency": "INR",
+    "symbol": "₹",
+    "lastUpdated": "2025-02-14",
+    "baseFare": 10,
+    "maxFare": 90,
+    "fareType": "distance-based",
+    "description": "Official BMRCL distance-based fare structure effective from February 9, 2025. Total route distance in km determines fare slab.",
+    "source": "BMRCL Fare Fixation Committee Report 2025"
+  },
+  "stationSlabs": [
+    { "slabId": 1, "minStations": 1, "maxStations": 2, "fare": 10, "description": "1-2 stations (approximate reference only)" },
+    { "slabId": 2, "minStations": 3, "maxStations": 4, "fare": 20, "description": "3-4 stations (approximate reference only)" },
+    { "slabId": 3, "minStations": 5, "maxStations": 6, "fare": 30, "description": "5-6 stations (approximate reference only)" },
+    { "slabId": 4, "minStations": 7, "maxStations": 8, "fare": 40, "description": "7-8 stations (approximate reference only)" },
+    { "slabId": 5, "minStations": 9, "maxStations": 10, "fare": 50, "description": "9-10 stations (approximate reference only)" },
+    { "slabId": 6, "minStations": 11, "maxStations": 15, "fare": 60, "description": "11-15 stations (approximate reference only)" },
+    { "slabId": 7, "minStations": 16, "maxStations": 18, "fare": 70, "description": "16-18 stations (approximate reference only)" },
+    { "slabId": 8, "minStations": 19, "maxStations": 22, "fare": 80, "description": "19-22 stations (approximate reference only)" },
+    { "slabId": 9, "minStations": 23, "maxStations": 30, "fare": 90, "description": "23-30 stations (approximate reference only)" },
+    { "slabId": 10, "minStations": 31, "maxStations": 999, "fare": 90, "description": "More than 30 stations (approximate reference only)" }
+  ],
+  "distanceSlabs": [
+    { "zoneId": "F1", "minKm": 0, "maxKm": 2, "fare": 10, "description": "0 to 2 km" },
+    { "zoneId": "F2", "minKm": 2, "maxKm": 4, "fare": 20, "description": "2 to 4 km" },
+    { "zoneId": "F3", "minKm": 4, "maxKm": 6, "fare": 30, "description": "4 to 6 km" },
+    { "zoneId": "F4", "minKm": 6, "maxKm": 8, "fare": 40, "description": "6 to 8 km" },
+    { "zoneId": "F5", "minKm": 8, "maxKm": 10, "fare": 50, "description": "8 to 10 km" },
+    { "zoneId": "F6", "minKm": 10, "maxKm": 15, "fare": 60, "description": "10 to 15 km" },
+    { "zoneId": "F7", "minKm": 15, "maxKm": 20, "fare": 70, "description": "15 to 20 km" },
+    { "zoneId": "F8", "minKm": 20, "maxKm": 25, "fare": 80, "description": "20 to 25 km" },
+    { "zoneId": "F9", "minKm": 25, "maxKm": 30, "fare": 90, "description": "25 to 30 km" },
+    { "zoneId": "F10", "minKm": 30, "maxKm": 999, "fare": 90, "description": "More than 30 km (maximum fare cap)" }
+  ],
+  "discounts": {
+    "smartCard": {
+      "name": "Namma Metro Smart Card / NCMC Card",
+      "peakDiscount": 5,
+      "offPeakDiscount": 10,
+      "sundayHolidayDiscount": 10,
+      "description": "5% discount during peak hours, 10% during non-peak hours, 10% on Sundays/Holidays (26th Jan, 15th Aug & 2nd Oct)",
+      "note": "Discounts applicable on corresponding token fares"
+    },
+    "groupTravel": {
+      "name": "Group Travel (10+)",
+      "discount": 10,
+      "description": "10% discount for groups of 10 or more"
+    },
+    "dailyPass": {
+      "name": "Daily Pass",
+      "price": 100,
+      "description": "Unlimited travel for 24 hours"
+    },
+    "weeklyPass": {
+      "name": "Weekly Pass",
+      "price": 500,
+      "description": "Unlimited travel for 7 days"
+    },
+    "monthlyPass": {
+      "name": "Monthly Pass",
+      "price": 1500,
+      "description": "Unlimited travel for 30 days"
+    }
+  },
+  "freeCategories": [
+    "Children below 3 years (with adult)",
+    "Freedom fighters with valid ID"
+  ],
+  "concessionalCategories": [
+    {
+      "category": "Senior Citizens (60+)",
+      "discount": "50%",
+      "requirement": "Valid ID proof"
+    },
+    {
+      "category": "Students",
+      "discount": "25%",
+      "requirement": "Valid student ID"
+    },
+    {
+      "category": "Physically Challenged",
+      "discount": "50%",
+      "requirement": "Disability certificate"
+    }
+  ],
+  "paymentMethods": [
+    "Smart Card (Contactless)",
+    "QR Code Ticket (UPI/Apps)",
+    "Token (Single Journey)",
+    "National Common Mobility Card (NCMC)",
+    "Credit/Debit Card (at counters)"
+  ],
+  "rechargeLocations": [
+    "All metro station ticket counters",
+    "Automatic Fare Collection (AFC) machines",
+    "BMRCL official app",
+    "Paytm, PhonePe, Google Pay"
+  ],
+  "operatingHours": {
+    "weekdays": {
+      "firstTrain": "05:00",
+      "lastTrain": "23:00"
+    },
+    "weekends": {
+      "firstTrain": "05:00",
+      "lastTrain": "23:00"
+    },
+    "holidays": {
+      "firstTrain": "05:00",
+      "lastTrain": "23:00"
+    }
+  },
+  "frequency": {
+    "peakHours": {
+      "morning": "08:00 - 10:00",
+      "evening": "17:00 - 20:00",
+      "frequency": "4-5 minutes"
+    },
+    "offPeak": {
+      "frequency": "6-10 minutes"
+    }
+  },
+  "travelTips": [
+    "Prefer Smart Card for faster entry and 5% discount",
+    "Avoid peak hours (8-10 AM, 5-8 PM) if possible",
+    "Use QR tickets for contactless boarding",
+    "Keep luggage under 25kg weight limit",
+    "Food and beverages not allowed inside trains",
+    "Priority seats for elderly, pregnant women, and differently-abled",
+    "Free WiFi available at major stations",
+    "Use metro app for real-time train status"
+  ],
+  "averageSpeed": {
+    "kmph": 34,
+    "timePerStation": 2.5,
+    "interchangeWalkTime": 5
+  },
+  "contact": {
+    "helpline": "080-22969222",
+    "email": "feedback@bmrc.co.in",
+    "website": "https://english.bmrc.co.in",
+    "lostAndFound": "080-22969333"
+  }
+}

@@ -1,0 +1,406 @@
+﻿Comprehensive Analysis of Namma Metro Fare Architecture: Fiscal Framework 2025-2026, Station-to-Station Matrix, and Algorithmic Logic
+1. Introduction: The Paradigm Shift in Bengaluru’s Urban Mobility Economics
+The fiscal year 2025-2026 represents a watershed moment in the operational history of the Bangalore Metro Rail Corporation Limited (BMRCL), the entity overseeing Namma Metro. After years of relatively static pricing structures that failed to keep pace with inflationary pressures and the capital-intensive demands of network expansion, the system has transitioned to a new fare regime. This report provides an exhaustive, expert-level analysis of the Namma Metro fare calculation logic, the official fare chart implemented in February 2025, and the projected station-to-station matrices for the 2025-2026 operational period. This analysis is not merely a catalog of prices; it is a deconstruction of the economic, legal, and operational algorithms that now govern the daily commute of millions in India's Silicon Valley.
+The revised fare structure, which came into effect on February 9, 2025, following the binding recommendations of the Fare Fixation Committee (FFC), introduces a rigorous distance-based slab system.1 This revision serves two critical functions: firstly, to address the financial sustainability of the corporation, which faces mounting debt service obligations from Phase 2 construction; and secondly, to establish a predictable, formulaic mechanism for future revisions, thereby insulating the system from political populism. The introduction of an automatic annual fare revision clause, commencing in February 2026, marks the alignment of Bengaluru’s transit economics with global best practices in infrastructure financing.3
+This document explores the intricacies of the "Telescopic Fare" model adopted by BMRCL, where the cost per kilometer decreases as the total distance increases, incentivizing long-distance suburban adoption. Furthermore, it examines the integration of the newly commissioned Yellow Line (R.V. Road to Bommasandra) into the existing Purple and Green Line matrix, analyzing how the expansion to 83+ stations reshapes the city's accessibility map.5 Through a detailed reconstruction of the fare matrix, validated against the official distance slabs and GTFS (General Transit Feed Specification) logic, this report offers a definitive reference for transport planners, policy analysts, and stakeholders in the urban mobility ecosystem.
+________________
+2. Institutional and Legal Framework of Fare Fixation
+To comprehend the rationale behind the 2025 fare chart, one must first dissect the statutory framework that empowers its creation. The pricing of mass rapid transit systems in India is not an arbitrary administrative decision but a quasi-judicial process governed by federal legislation.
+2.1 The Statutory Mandate: Metro Railways (Operation and Maintenance) Act, 2002
+The legal bedrock of Namma Metro's revenue model is the Metro Railways (Operation and Maintenance) Act, 2002 (O&M Act). Specifically, Section 34 of this Act mandates the constitution of a Fare Fixation Committee (FFC) to recommend fare revisions. The BMRCL administration, despite being the operator, does not possess the unilateral authority to alter base fares; it must adjudicate its case for revenue enhancement before this external body.1
+For the 2025 revision cycle, the FFC was constituted under the chairmanship of a former Judge of the High Court, appointed via the Government of India (GOI) letter No. 26/01/2021-EO(SM-II) dated September 7, 2024.1 This judicial oversight is designed to ensure neutrality, balancing the operator's need for solvency against the public's right to affordable transport. The committee's constitution was a direct response to the widening gap between the metro's operational expenses (OpEx) and its farebox revenue, a divergence exacerbated by the post-pandemic inflationary environment.
+2.2 The Binding Nature of Recommendations (Section 37)
+A critical, often overlooked aspect of this framework is Section 37 of the O&M Act. This section stipulates that the recommendations made by the FFC "shall be binding on the Metro Railway Administration".1 This provision is significant because it removes political discretion from the implementation phase. Once the FFC submitted its report on December 16, 2024, recommending the new slab structure, the BMRCL Board was legally obligated to implement it.
+This legal binding explains the inevitability of the February 2025 hike, despite substantial public opposition and the political sensitivity typically associated with transport utility pricing. The FFC's report emphasized a "fine balance between Affordability and Financial Sustainability," concluding that deferring the hike would jeopardize the corporation's ability to service the massive loans procured from international agencies like JICA (Japan International Cooperation Agency) for the Phase 2 expansion.3
+2.3 The Innovation of Automatic Annual Revision (2026 Onwards)
+Perhaps the most strategic shift in the 2025 report is the introduction of an automatic fare revision formula. Historically, fare revisions in Indian metros have been sporadic, leading to long periods of stagnation followed by sharp, painful hikes—exemplified by the massive 2025 revision where fares rose by up to 71% in certain sectors to catch up with years of inflation.7
+To mitigate this "shock" effect and ensure smooth revenue smoothing, the FFC recommended, and BMRCL accepted, a provision for an automatic year-on-year fare revision. Starting from February 2026, fares are permitted to increase by up to 5% annually.3 This mechanism aligns Namma Metro with utility pricing models where tariffs are indexed to input costs (CPI, energy prices, staff costs). This automatic revision will remain in effect until the constitution of the next FFC, providing BMRCL with a predictable cash flow model essential for its long-term credit rating and operational stability.6
+________________
+3. Fare Calculation Logic: The Algorithmic Core
+The core of the Namma Metro fare system is a distance-based, stage-carriage model. Unlike zonal systems used in London (Zones 1-6) or flat-fare systems used in New York (MTA), Bengaluru employs a granular Distance Slab methodology. This section deconstructs the mathematical logic used to compute the fare between any two coordinates in the network.
+3.1 The Distance Slab Progression (The 2025 Logic)
+The fare calculator operates on a step-function algorithm where the fare remains constant within a specific distance range (slab) and increments only when the rider crosses a threshold. The 2025 revision redefined these slabs to introduce higher granularity at shorter distances and a capped maximum for long-distance travel.
+The logic follows a non-linear "telescopic" progression:
+1. Entry Price (Base Fare): The minimum cost to enter the system is set at ₹10 for the first 2 kilometers. This low entry barrier is designed to encourage short hops, although the per-kilometer cost is highest in this bracket.1
+2. Short-Haul Extraction: For distances between 2 km and 10 km, the fare increases by ₹10 for every 2 km interval. This is the steepest part of the pricing curve (₹5/km marginal cost), extracting maximum value from short-distance commuters who typically burden the system's capacity in high-density central zones like Majestic and Indiranagar.
+3. Medium-Haul Tapering: Between 10 km and 15 km, the increment slows. The slab expands to a 5 km range for a ₹10 increase (₹2/km marginal cost).
+4. Long-Haul Subsidy: Beyond 15 km, the slabs remain at 5 km intervals until the 30 km mark.
+5. The Price Cap: Any distance exceeding 30 km is charged at the flat maximum rate of ₹90.1
+This structure is economically sophisticated. It subsidizes the suburban commuter—who travels from affordable housing zones (e.g., Kengeri, Whitefield, Bommasandra) to the city center—while maximizing yield from the high-frequency, short-distance traveler in the Central Business District (CBD).
+Table 1: Official Fare Slabs and Marginal Cost Analysis (Effective Feb 9, 2025)
+Fare Zone
+	Distance Slab (km)
+	Fare (₹)
+	Slab Width (km)
+	Marginal Cost (₹/km)
+	Cumulative Cost (₹/km)
+	F1
+	0 - 2
+	10.00
+	2
+	5.00
+	5.00
+	F2
+	2 - 4
+	20.00
+	2
+	5.00
+	5.00
+	F3
+	4 - 6
+	30.00
+	2
+	5.00
+	5.00
+	F4
+	6 - 8
+	40.00
+	2
+	5.00
+	5.00
+	F5
+	8 - 10
+	50.00
+	2
+	5.00
+	5.00
+	F6
+	10 - 15
+	60.00
+	5
+	2.00
+	4.00
+	F7
+	15 - 20
+	70.00
+	5
+	2.00
+	3.50
+	F8
+	20 - 25
+	80.00
+	5
+	2.00
+	3.20
+	F9
+	25 - 30
+	90.00
+	5
+	2.00
+	3.00
+	F10
+	> 30
+	90.00
+	Infinite
+	0.00
+	< 3.00
+	Source: Analysis of BMRCL Official Fare Chart 2025.1
+Insight: The data in Table 1 reveals the "telescopic" nature of the pricing. A commuter traveling 4 km pays ₹5.00 per km, whereas a commuter traveling 30 km pays only ₹3.00 per km. This pricing strategy is essential for decongesting the city center by making suburban living financially viable in terms of transport costs.
+3.2 Dynamic Pricing: The Peak vs. Non-Peak Algorithm
+A significant innovation in the 2025 fare chart is the introduction of dynamic pricing based on the time of day, a concept known as Demand Side Management (DSM). This mechanism aims to flatten the ridership curve, reducing the "crush load" during peak hours and incentivizing travel during lean periods without capital investment in new rolling stock.
+The Algorithm:
+* Smart Card Base Discount: All smart card users receive a baseline discount of 5% compared to token users, applicable at all times.1
+* Time-of-Day Logic: The system checks the Entry Timestamp at the AFC (Automatic Fare Collection) gate.
+   * Peak Hours: 08:00 AM to 12:00 PM; 04:00 PM to 09:00 PM. (Standard 5% discount applies).
+   * Non-Peak Hours: Start of revenue service to 08:00 AM; 12:00 PM to 04:00 PM; 09:00 PM to close of service.
+   * Non-Peak Incentive: An additional 5% discount is applied during non-peak hours, resulting in a total effective discount of 10%.1
+   * Weekend Logic: On Sundays and National Holidays (January 26, August 15, October 2), a flat 10% discount applies throughout the operational day, treating the entire day as "Non-Peak" to encourage leisure travel.1
+Calculation Example:
+If the base token fare is ₹60:
+* Peak Smart Card Fare:   .
+* Non-Peak Smart Card Fare:   .
+This differential of ₹3 may seem marginal per trip, but for a daily commuter, it accumulates to significant monthly savings, theoretically shifting the behavior of price-sensitive demographics like students and retirees.
+3.3 Rounding and Balance Rules
+The logical framework includes strict rules for currency handling to ensure speed at the gates and minimize change-handling friction:
+   1. Rounding: All fares are rounded to the nearest whole rupee.8 While tokens are denominated in multiples of ₹10, smart card deductions can be precise (e.g., ₹38, ₹57).
+   2. Minimum/Maximum Balance: The minimum balance required on a smart card to enter the system was raised from ₹50 to ₹90 in 2025.1 This creates a logical "floor" that matches the system's "ceiling" (maximum fare), ensuring that no user can exit with a negative balance, which would complicate the AFC exit logic.
+   3. Same Station Penalty: If a user enters and exits the same station (e.g., enters to use the restroom or cross the road and exits within 20 minutes), a fixed charge of ₹10 is applied.10 This prevents revenue leakage from non-travel usage of station infrastructure.
+________________
+4. Technical Implementation: GTFS and Data Structure
+In the modern digital transit ecosystem, the fare logic described above is not just printed on charts but encoded into the General Transit Feed Specification (GTFS). This standardized data format allows third-party applications like Google Maps, Namma Yatri, and Tummoc to calculate fares dynamically.11
+4.1 GTFS File Architecture for Fares
+The BMRCL's adoption of GTFS for fare transparency involves two primary text files that define the backend logic:
+   1. fare_attributes.txt: This file defines the fare classes. For Namma Metro, it would contain entries for the Token class, Smart Card class (Peak), and Smart Card class (Off-Peak).
+   * Fields: fare_id (Unique ID), price (e.g., 10.00), currency_type (INR), payment_method (0 for valid on board/entry), transfers (likely empty or 0 as transfers are internal), transfer_duration.13
+   2. fare_rules.txt: This file maps the fare_id to the network geography. Since Namma Metro uses a distance-matrix approach rather than simple zones, the GTFS implementation likely utilizes the origin_id and destination_id fields to map specific station pairs to specific fare attributes. Alternatively, newer GTFS extensions like fare_leg_rules.txt might be employed to calculate the fare based on the distance traveled along the shape of the route.15
+4.2 Multimodal Integration
+The release of this data via the India Urban Data Exchange (IUDX) platform has enabled "multimodal" journey planning.12 Apps can now query the fare_rules.txt to determine the metro cost and combine it with real-time auto-rickshaw fares or BMTC bus fares. This technical integration is crucial for the "First Mile Last Mile" (FMLM) connectivity, allowing a user to see a "Total Trip Cost" of ₹85 (₹40 Auto + ₹30 Metro + ₹15 Bus) rather than disjointed pricing.
+________________
+5. Station-to-Station Fare Matrix 2025-2026
+While the slab chart provides the logic, the actual user experience is defined by the specific cost between two stations. With the operational network expanding to include the Purple, Green, and the new Yellow Line, the matrix has grown exponentially. This section reconstructs the fare matrix for critical high-volume corridors.
+5.1 Corridor 1: Purple Line (East-West Connectivity)
+The Purple Line serves as the "IT Spine" of the city, connecting the residential west (Kengeri/Challaghatta) to the tech hubs of the east (Whitefield/Kadugodi). The 2025 fare revision has the most profound impact here due to the long distances involved.
+Route: Challaghatta ↔ Whitefield (Kadugodi)
+Total Distance: ~43.5 km
+Key Stations: Challaghatta, Kengeri, Mysore Road, Majestic (Interchange), Indiranagar, KR Puram, Whitefield.
+Table 2: Purple Line Fare Matrix (Selected Hubs) - 2025 Rates
+Origin Station
+	Destination Station
+	Approx. Distance (km)
+	Fare Slab
+	Token Fare (₹)
+	Smart Card (Peak) (₹)
+	Smart Card (Off-Peak) (₹)
+	Majestic
+	Indiranagar
+	6.5
+	6-8
+	40
+	38.00
+	36.00
+	Majestic
+	KR Puram
+	14.2
+	10-15
+	60
+	57.00
+	54.00
+	Majestic
+	Whitefield (Kadugodi)
+	28.5
+	25-30
+	90
+	85.50
+	81.00
+	Whitefield
+	Indiranagar
+	18.0
+	15-20
+	70
+	66.50
+	63.00
+	Whitefield
+	Challaghatta
+	~43.5
+	>30
+	90
+	85.50
+	81.00
+	Indiranagar
+	MG Road
+	3.5
+	2-4
+	20
+	19.00
+	18.00
+	Mysore Road
+	KR Puram
+	21.5
+	20-25
+	80
+	76.00
+	72.00
+	Source: Distances derived from 5; Fares calculated via 10 Slabs.
+Analytical Insight: The "End-to-End" fare on the Purple Line (Whitefield to Challaghatta) hits the cap of ₹90. Previously, this journey would have been calculated cumulatively or faced a lower cap of ₹60, representing a 50% increase in the ceiling price. However, compared to alternative modes, this remains highly competitive. A ride-hailing service (Uber/Ola) for this 43 km stretch during peak hours typically costs between ₹1,000 and ₹1,400. Thus, despite the hike, the Metro offers a 90%+ cost saving for cross-city travel.
+5.2 Corridor 2: Green Line (North-South Connectivity)
+The Green Line connects the industrial north (Peenya) with the residential south (Jayanagar, Banashankari, Silk Institute). This corridor sees a mix of blue-collar industrial workers and white-collar professionals.
+Route: Madavara (BIEC) ↔ Silk Institute
+Total Distance: ~34 km
+Key Stations: Madavara, Peenya Industry, Yeshwanthpur, Majestic, RV Road, Banashankari, Silk Institute.
+Table 3: Green Line Fare Matrix (Selected Hubs) - 2025 Rates
+Origin Station
+	Destination Station
+	Approx. Distance (km)
+	Fare Slab
+	Token Fare (₹)
+	Smart Card (Peak) (₹)
+	Majestic
+	Yeshwanthpur
+	5.5
+	4-6
+	30
+	28.50
+	Majestic
+	Peenya Industry
+	9.0
+	8-10
+	50
+	47.50
+	Majestic
+	Madavara (BIEC)
+	~15.0
+	10-15
+	60
+	57.00
+	Majestic
+	Jayanagar
+	5.8
+	4-6
+	30
+	28.50
+	Majestic
+	Silk Institute
+	16.5
+	15-20
+	70
+	66.50
+	Yeshwanthpur
+	Banashankari
+	12.5
+	10-15
+	60
+	57.00
+	Peenya Ind.
+	Silk Institute
+	~25.5
+	25-30
+	90
+	85.50
+	Madavara
+	Silk Institute
+	~34.0
+	>30
+	90
+	85.50
+	Source: Distances derived from 24; Fares calculated via 10 Slabs.
+Analytical Insight: The connection from the industrial hub of Peenya to the residential south (Banashankari) falls in the ₹90 range. For daily wage workers in the industrial belt, a ₹180 daily commute (round trip) is significant. This highlights the importance of the monthly pass products (if reintroduced) or the employer-subsidized travel schemes that BMRCL has occasionally mooted. However, the ₹30 fare from Majestic to Jayanagar remains very affordable, preserving the metro's utility for short-distance central city commerce.
+5.3 Corridor 3: Yellow Line (The Electronics City Connector)
+The 2025-2026 period is defined by the operationalization of the Yellow Line, a critical artery connecting the city to the massive Electronics City employment cluster. This line features driverless trains and connects the notorious Silk Board junction, arguably the most congested traffic bottleneck in India.17
+Route: R.V. Road ↔ Bommasandra
+Total Distance: 18.82 km
+Key Stations: R.V. Road (Interchange), Jayadeva Hospital (Interchange), Central Silk Board, Electronic City, Hebbagodi, Bommasandra.
+Table 4: Yellow Line Fare Matrix (Projected 2025-2026)
+Origin Station
+	Destination Station
+	Approx. Distance (km)
+	Fare Slab
+	Token Fare (₹)
+	Smart Card (Peak) (₹)
+	R.V. Road
+	Central Silk Board
+	4.5
+	4-6
+	30
+	28.50
+	R.V. Road
+	Electronic City
+	13.5
+	10-15
+	60
+	57.00
+	R.V. Road
+	Bommasandra
+	18.8
+	15-20
+	70
+	66.50
+	Majestic
+	Electronic City
+	~18.5
+	15-20
+	70
+	66.50
+	Majestic
+	Bommasandra
+	~24.0
+	20-25
+	80
+	76.00
+	Indiranagar
+	Electronic City
+	~21.0
+	20-25
+	80
+	76.00
+	Whitefield
+	Electronic City
+	~40.0
+	>30
+	90
+	85.50
+	Note: Majestic to Electronic City involves an interchange at R.V. Road (Green Line). The fare is calculated on the cumulative distance across lines, not as two separate tickets.
+Strategic Insight: The fare of ₹70 from Majestic to Electronic City is aggressively priced to capture market share. A cab ride for this route often exceeds ₹600-₹800 due to the extreme congestion at Silk Board. The time savings are equally dramatic: the Metro covers this distance in roughly 35-40 minutes, whereas road transport can take 90-120 minutes during peak hours. This pricing creates a massive economic incentive for the modal shift of IT employees, potentially reducing private vehicle density on Hosur Road.
+5.4 Inter-Line Connectivity and Interchange Logic
+The matrix is unified by the interchange stations. The 2025-2026 network relies on three critical nodes:
+   1. Majestic (Nadaprabhu Kempegowda Station): The primary cross-over for Purple and Green lines.
+   2. R.V. Road: The gateway to the Yellow Line for Green Line users.
+   3. Jayadeva Hospital: A future major interchange (Pink/Yellow), currently relevant for the Yellow Line.
+Fare Calculation at Interchanges:
+The system uses a "seamless" fare logic. When a user changes lines at Majestic, they do not tap out and tap in. The system simply calculates the distance from the Origin (e.g., Whitefield) to the Destination (e.g., Peenya) through the interchange node.
+   * Path: Whitefield -> Majestic -> Peenya.
+   * Distance: 28.5 km + 9.0 km = 37.5 km.
+   * Fare: The >30 km slab applies. Total Fare = ₹90.
+   * Benefit: If these were two separate tickets, the cost would be ₹90 (Whitefield-Majestic) + ₹50 (Majestic-Peenya) = ₹140. The integrated fare saves the user ₹50, reinforcing the network effect.
+________________
+6. The Automatic Fare Revision Mechanism (2026 Projection)
+The most significant structural change in the FFC's 2025 report is the authorization of automatic fare revisions starting February 2026. This section analyzes the formula and its future implications.
+6.1 The 5% Cap Formula
+To avoid the political gridlock that froze fares between 2017 and 2024, BMRCL is now authorized to increase fares by up to 5% annually.3
+The Formula:
+  
+
+While the specific inflation index (CPI-IW or WPI) is an internal metric, the "up to 5%" cap acts as a safeguard for commuters.
+6.2 Projected 2026 Fare Impact
+If the full 5% hike is applied in February 2026, the fare chart will evolve as follows:
+   * Base Fare (₹10):   .
+      * Scenario A: Rounding to nearest ₹1    ₹11.
+      * Scenario B: Rounding to nearest ₹5 (Token)    Remains ₹10 (until accumulated inflation justifies ₹15). Smart cards might reflect the exact ₹10.50 deduction.
+         * Maximum Fare (₹90):   .
+            * Result: Likely rounded to ₹95.
+Economic Impact Analysis:
+For a daily commuter traveling from Indiranagar to Whitefield (Current Fare ₹70):
+            * 2025 Daily Cost: ₹140 (round trip).
+            * 2026 Projected Cost:    ₹74 or ₹75. Daily Cost ₹150.
+            * Monthly Impact: An increase of approximately ₹220-₹250 per month.
+            * Conclusion: This modest, predictable increase is designed to be absorbed by annual salary increments, preventing the public outcry seen in 2025 when fares jumped by 50-70% overnight. It provides BMRCL with a steady revenue growth curve to match the rising costs of electricity and staff salaries.
+________________
+7. Operational & Financial Context: The "Costliest Metro" Debate
+The 2025 fare hike sparked a debate regarding Namma Metro's affordability, with various media outlets labeling it the "costliest metro in India".7 It is essential to contextualize this claim within the operational financial framework of BMRCL.
+7.1 Debt Servicing vs. Operating Ratio
+BMRCL is burdened by significant debt servicing obligations. The construction of Phase 2 (72 km) and Phase 2A/2B (Airport Line) involves a capital expenditure exceeding ₹30,000 Crore, largely funded through loans from JICA, AFD (Agence Française de Développement), and the Asian Development Bank.19 Unlike the Delhi Metro, which benefited from lower historical construction costs and larger equity infusion in its early phases, Namma Metro's recent expansions have occurred during a period of high land acquisition costs and commodity inflation.
+The FFC noted that without the hike, the Net Loss would spiral to ₹577 Crore by the fiscal year 2029-30.4 The farebox revenue must strictly cover:
+               1. O&M Expenses: Traction energy, station management, security, and maintenance.
+               2. Depreciation: Replacement cost of assets.
+               3. Interest Payments: Servicing the sovereign loans.
+7.2 Affordability Metrics Compared
+When compared to Delhi Metro (DMRC):
+               * Delhi: Maximum fare is generally lower (capped around ₹60 for longer distances in past cycles, though subject to its own revisions).
+               * Bengaluru: Maximum fare is ₹90.
+However, transport economists argue that "affordability" must be measured against the Per Capita Income of the city. Bengaluru has one of the highest per capita incomes in India. The FFC likely calibrated the ₹90 cap to align with the purchasing power of the city's IT and professional workforce, while maintaining the ₹10-₹30 slabs for lower-income groups using the system for short hops.
+Furthermore, the "premium" pricing is defended by the high cost of the underground sections (Pink Line, Majestic interchange), which cost 4-5 times more per kilometer to construct than elevated sections. The fare hike is, in essence, a user fee for this expensive infrastructure.
+________________
+8. Technology Integration: QR, NCMC, and WhatsApp
+The fare calculation logic is deeply integrated with the evolving digital payment ecosystem.
+8.1 National Common Mobility Card (NCMC)
+The "Varshik" (Stored Value) card complies with the NCMC standards (RuPay). The fare logic described above is encoded into the card's validation sequence.
+               * Entry: The gate checks for the minimum balance (₹90). It writes the Entry Station ID and Timestamp to the card.
+               * Exit: The exit gate reads the Entry data, calculates the distance, applies the Peak/Off-Peak discount based on the Entry Timestamp, and deducts the precise amount.
+8.2 QR Code and Mobile Ticketing
+BMRCL has aggressively pushed QR-based ticketing via its app and WhatsApp.
+               * Passes: The 1-Day (₹250), 3-Day (₹550), and 5-Day (₹850) passes are now primarily QR-based.20
+               * Eliminating Security Deposits: The shift to QR passes eliminates the need for the ₹50 card security deposit, lowering the barrier to entry for tourists and casual users.
+8.3 Digital Logic Anomalies
+The system handles anomalies logically:
+               * Overstay: If a user remains in the paid area beyond the permissible time (usually 20 mins for same station, 120 mins for different stations), a penalty is deducted.
+               * Mismatched Entry/Exit: If a user jumps a gate (no entry scan), the exit gate will reject the card/QR, requiring manual intervention at the customer care booth where the maximum fare (₹90) plus a penalty is usually levied.
+________________
+9. Conclusion
+The 2025-2026 fiscal period marks the maturation of Namma Metro's revenue model. The transition from ad-hoc political fare fixation to a technocratic, formula-driven approach (FFC + Automatic Revision) is a significant policy evolution that secures the system's long-term viability.
+For the commuter, the "Station to Station Matrix" is no longer just a static chart but a dynamic function of distance, time of travel, and payment method. The introduction of the ₹90 cap, while initially painful, incentivizes the exact behavior the city needs: long-distance commuting via public transit rather than private vehicles. With the integration of the Yellow Line and the upcoming Pink Line, the fare architecture described in this report will serve as the financial spine of Bengaluru's mobility for the next decade.
+The system has successfully balanced the competing demands of Solvency (covering debt and O&M) and Utility (providing a viable alternative to the city's congested roads). As the network expands to 175 km by 2026 22, the robustness of this fare logic will be tested, but the foundational algorithms established in 2025 appear resilient enough to support this growth.
+Works cited
+               1. Bangalore Metro Rail Corporation Limited, accessed on January 23, 2026, https://english.bmrc.co.in:8282/English/uploads/news/english/fileuploads/1739069224825$@!!Media%20Brief%20-English-%20Fin%2008.02.2025%20(1).pdf
+               2. Bengaluru Metro fares to increase from February 9; Check updated fare list, smart card discounts, and more - The Economic Times, accessed on January 23, 2026, https://m.economictimes.com/news/india/bengaluru-metro-fares-to-increase-from-february-9-check-updated-fare-list-smart-card-discounts-and-more/articleshow/118083102.cms
+               3. Namma Metro Fares to Rise Up to 5% Annually from 2026 | News9 - YouTube, accessed on January 23, 2026, https://www.youtube.com/watch?v=8itEY6teL9w
+               4. Namma Metro Fare Hike Likely From February 2026 in Bengaluru - Deccan Herald, accessed on January 23, 2026, https://www.deccanherald.com/india/karnataka/bengaluru/annual-automatic-fare-revision-namma-metro-tickets-to-cost-more-from-february-2026-3860387
+               5. Namma Metro - Wikipedia, accessed on January 23, 2026, https://en.wikipedia.org/wiki/Namma_Metro
+               6. Bengaluru commuters alert! Namma Metro fares to increase from February 2026—check details | Today News - Mint, accessed on January 23, 2026, https://www.livemint.com/news/india/bengaluru-commuters-alert-namma-metro-fares-to-increase-from-february-2026-check-details-11768293793057.html
+               7. Bengaluru Metro fare to be hiked by 5% from February - The New Indian Express, accessed on January 23, 2026, https://www.newindianexpress.com/cities/bengaluru/2026/Jan/12/bengaluru-metro-fare-to-be-hiked-by-5-from-february
+               8. Namma Metro Fare Hike Alert 2026: What Changes for Commuters from February, accessed on January 23, 2026, https://www.republicworld.com/travel/namma-metro-fare-hike-alert-2026-what-changes-for-commuters-from-february
+               9. Namma Metro Ticket Prices May Rise In February, BMRCL Reviews Fares - Times Property, accessed on January 23, 2026, https://timesproperty.com/news/post/namma-metro-ticket-prices-may-rise-in-feb-2026-blid11199
+               10. BMRCL Fares - 14.02.2025, accessed on January 23, 2026, https://english.bmrc.co.in:8282/English/uploads/news/english//fileuploads/Revised_Fare_Chart_for_webiste.pdf
+               11. Bangalore_GTFS_Data - Kaggle, accessed on January 23, 2026, https://www.kaggle.com/datasets/ashiksanyo/bangalore-gtfs-data
+               12. Bengaluru adopts GTFS data format, paving way for seamless multimodal transit with 'Namma Transit' launch | Bangalore News - The Indian Express, accessed on January 23, 2026, https://indianexpress.com/article/cities/bangalore/bengaluru-gtfs-data-format-seamless-multimodal-transit-10153394/
+               13. Fares - Transit Partners Help, accessed on January 23, 2026, https://support.google.com/transitpartners/answer/6377425?hl=en
+               14. Reference - General Transit Feed Specification, accessed on January 23, 2026, https://gtfs.org/documentation/schedule/reference/
+               15. Fares - General Transit Feed Specification, accessed on January 23, 2026, https://gtfs.org/getting-started/features/fares/
+               16. fares.md - osplanning-data-standards/GTFS-PLUS - GitHub, accessed on January 23, 2026, https://github.com/osplanning-data-standards/GTFS-PLUS/blob/master/fares.md
+               17. Yellow Line (Namma Metro) - Wikipedia, accessed on January 23, 2026, https://en.wikipedia.org/wiki/Yellow_Line_(Namma_Metro)
+               18. Bengaluru Electronic City Metro: Titagarh Rail Systems to roll out first train set on Monday, accessed on January 23, 2026, https://m.economictimes.com/news/bengaluru-news/bengaluru-namma-metro-yellow-line-to-start-next-monday-here-are-route-stations/articleshow/116904453.cms
+               19. Bangalore Metro: Map Route, Timings, Lines, Stations List and Updated News 2025, accessed on January 23, 2026, https://www.nobroker.in/blog/bangalore-metro-route/
+               20. Bengaluru Yellow Line Metro adds 7th train, to run at 10-minute frequency during peak rush hours - Hindustan Times, accessed on January 23, 2026, https://www.hindustantimes.com/cities/bengaluru-news/bengaluru-yellow-line-metro-adds-7th-train-to-run-at-10-minute-frequency-during-peak-rush-hours-101768538989925.html
+               21. Bengaluru metro travellers attention! BMRCL adds seventh train; aims to reduce yellow line peak-hour waits - The Times of India, accessed on January 23, 2026, https://timesofindia.indiatimes.com/business/infrastructure/bengaluru-metro-travellers-attention-bmrcl-adds-seventh-train-aims-to-reduce-yellow-line-peak-hour-waits/articleshow/126564166.cms
+               22. report of 1st fare fixation committee - bangalore metro rail corporation limited, accessed on January 23, 2026, https://english.bmrc.co.in:8282/English/uploads/news/english//fileuploads/1757580061424$@!!Bmrcl%20ffc.pdf
+               23. Purple Line (Namma Metro) - Wikipedia, accessed on January 23, 2026, https://en.wikipedia.org/wiki/Purple_Line_(Namma_Metro)
+               24. Green Line (Namma Metro) - Wikipedia, accessed on January 23, 2026, https://en.wikipedia.org/wiki/Green_Line_(Namma_Metro)
+               25. Green Line Metro Bangalore 2025: Routes, Maps, & station - NoBroker, accessed on January 23, 2026, https://www.nobroker.in/blog/green-line-metro-bangalore/
