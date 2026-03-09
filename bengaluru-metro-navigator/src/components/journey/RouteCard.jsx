@@ -48,6 +48,7 @@ function getInterchangeMeta(stationName, fromLine, toLine) {
 function buildTimeline(segments) {
   if (!segments?.length) return [];
   const entries = [];
+  let serial = 1;
 
   segments.forEach((seg, i) => {
     const isFirst = i === 0;
@@ -57,13 +58,15 @@ function buildTimeline(segments) {
 
     // Origin — first station of the first segment
     if (isFirst && s.length > 0) {
-      entries.push({ type: 'origin', station: s[0], line: seg.line });
+      entries.push({ type: 'origin', station: s[0], line: seg.line, serial: serial++ });
     }
 
     // Intermediates — everything between the anchored first & last station
     const mid = s.length > 2 ? s.slice(1, s.length - 1) : [];
     if (mid.length > 0) {
-      entries.push({ type: 'intermediates', stations: mid, line: seg.line });
+      const serialStart = serial;
+      serial += mid.length;
+      entries.push({ type: 'intermediates', stations: mid, line: seg.line, serialStart });
     }
 
     // Interchange — junction between this segment and the next
@@ -75,6 +78,7 @@ function buildTimeline(segments) {
         fromLine: seg.line,
         toLine: next.line,
         meta: getInterchangeMeta(station?.name, seg.line, next.line),
+        serial: serial++,
       });
     }
 
@@ -84,6 +88,7 @@ function buildTimeline(segments) {
         type: 'destination',
         station: s[s.length - 1],
         line: seg.line,
+        serial: serial++,
       });
     }
   });
@@ -142,18 +147,23 @@ const TimelineNode = memo(function TimelineNode({ entry, showTrack }) {
       <div className={`flex-1 min-w-0 ${showTrack ? 'pb-4' : ''}`}>
         {/* Station name + line badge */}
         <div className="flex items-start justify-between gap-2">
-          <div className="min-w-0">
-            <Link
-              to={`/stations/${entry.station?.id}`}
-              className="font-semibold text-gray-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors break-words"
-            >
-              {entry.station?.name}
-            </Link>
-            {entry.station?.nameKannada && (
-              <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">
-                {entry.station.nameKannada}
-              </p>
-            )}
+          <div className="min-w-0 flex items-start gap-2">
+            <span className="flex-shrink-0 w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-[10px] font-bold flex items-center justify-center mt-0.5">
+              {entry.serial}
+            </span>
+            <div className="min-w-0">
+              <Link
+                to={`/stations/${entry.station?.id}`}
+                className="font-semibold text-gray-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors break-words"
+              >
+                {entry.station?.name}
+              </Link>
+              {entry.station?.nameKannada && (
+                <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">
+                  {entry.station.nameKannada}
+                </p>
+              )}
+            </div>
           </div>
 
           {/* Line badge — origin & destination only */}
@@ -194,7 +204,7 @@ const TimelineNode = memo(function TimelineNode({ entry, showTrack }) {
  * Renders the collapsible intermediate-stations section.
  * The track line runs continuously through the left column.
  */
-const TimelineTrack = memo(function TimelineTrack({ stations, line }) {
+const TimelineTrack = memo(function TimelineTrack({ stations, line, serialStart }) {
   const trackColor = getLineColor(line);
 
   return (
@@ -222,14 +232,19 @@ const TimelineTrack = memo(function TimelineTrack({ stations, line }) {
               {stations.map((st, j) => (
                 <li
                   key={st.id || j}
-                  className="text-sm text-gray-700 dark:text-gray-300"
+                  className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-2"
                 >
-                  {st.name}
-                  {st.nameKannada && (
-                    <span className="text-gray-400 dark:text-gray-500 ml-1.5 text-xs">
-                      {st.nameKannada}
-                    </span>
-                  )}
+                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 text-[10px] font-bold flex items-center justify-center">
+                    {serialStart + j}
+                  </span>
+                  <span>
+                    {st.name}
+                    {st.nameKannada && (
+                      <span className="text-gray-400 dark:text-gray-500 ml-1.5 text-xs">
+                        {st.nameKannada}
+                      </span>
+                    )}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -288,6 +303,7 @@ export default function RouteCard({ route }) {
                 key={`track-${i}`}
                 stations={entry.stations}
                 line={entry.line}
+                serialStart={entry.serialStart}
               />
             );
           }
