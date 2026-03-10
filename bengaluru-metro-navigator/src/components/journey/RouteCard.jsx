@@ -333,17 +333,19 @@ const IntermediateStops = memo(function IntermediateStops({ stations, line, seri
                   style={{ backgroundColor: getLineHexColor(line) }}
                   aria-hidden="true"
                 />
-                <Link
-                  to={`/stations/${st.id}`}
-                  className="text-[13px] sm:text-sm text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors touch-manipulation"
-                >
-                  {st.name}
-                </Link>
-                {st.nameKannada && (
-                  <span className="text-[11px] text-gray-400 dark:text-gray-500 ml-1 sm:ml-1.5 hidden sm:inline">
-                    {st.nameKannada}
-                  </span>
-                )}
+                <div className="min-w-0">
+                  <Link
+                    to={`/stations/${st.id}`}
+                    className="text-[13px] sm:text-sm text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors touch-manipulation"
+                  >
+                    {st.name}
+                  </Link>
+                  {st.nameKannada && (
+                    <span className="text-[10px] sm:text-[11px] text-gray-400 dark:text-gray-500 ml-1.5">
+                      {st.nameKannada}
+                    </span>
+                  )}
+                </div>
               </li>
             ))}
           </ul>
