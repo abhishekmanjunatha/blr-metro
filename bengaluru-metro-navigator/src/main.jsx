@@ -16,14 +16,7 @@ if (root) {
     </React.StrictMode>
   );
   
-  // Register service worker after app is mounted (delayed)
-  if ('serviceWorker' in navigator && import.meta.env.PROD) {
-    window.addEventListener('load', () => {
-      import('./utils/pwa').then(({ registerServiceWorker }) => {
-        registerServiceWorker();
-      }).catch(console.error);
-    });
-  }
+  // Service worker is registered automatically by vite-plugin-pwa
 } else {
   console.error('Root element not found');
 }
