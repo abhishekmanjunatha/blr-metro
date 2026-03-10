@@ -100,34 +100,34 @@ export default function RouteResults({ routes }) {
       )}
 
       {/* Selected Route Summary */}
-      <div className="card p-4">
-        <div className="flex flex-wrap gap-6 justify-between">
+      <div className="card p-3 sm:p-4">
+        <div className="flex items-start justify-between gap-3">
           {/* Journey Info */}
-          <div className="flex items-center gap-4">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-gray-900 dark:text-white">
+          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+            <div className="text-center flex-shrink-0">
+              <div className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
                 {selectedRoute.totalStops || selectedRoute.stationsCount || 0}
               </div>
               <div className="text-xs text-gray-500 dark:text-gray-400">stops</div>
             </div>
-            <div className="w-px h-10 bg-gray-200 dark:bg-gray-700" />
-            <div className="text-center">
-              <div className="flex items-center text-2xl font-bold text-gray-900 dark:text-white">
-                <Clock className="w-5 h-5 mr-1 text-gray-400" />
-                {formatDuration(selectedRoute.estimatedTime || selectedRoute.totalTime || 0)}
+            <div className="w-px h-10 bg-gray-200 dark:bg-gray-700 flex-shrink-0" />
+            <div className="min-w-0">
+              <div className="flex items-center text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
+                <Clock className="w-4 h-4 sm:w-5 sm:h-5 mr-1 text-gray-400 flex-shrink-0" />
+                <span>{formatDuration(selectedRoute.estimatedTime || selectedRoute.totalTime || 0)}</span>
               </div>
               <div className="text-xs text-gray-500 dark:text-gray-400">travel time</div>
             </div>
           </div>
 
           {/* Fare — unified multi-tier display */}
-          <div className="flex flex-col items-end gap-0.5">
-            <div className="flex items-center text-2xl font-bold text-metro-green">
-              <Ticket className="w-5 h-5 mr-1" />
+          <div className="flex flex-col items-end gap-0.5 flex-shrink-0">
+            <div className="flex items-center text-xl sm:text-2xl font-bold text-metro-green">
+              <Ticket className="w-4 h-4 sm:w-5 sm:h-5 mr-1 flex-shrink-0" />
               ₹{typeof selectedRoute.fare === 'object' ? selectedRoute.fare.base : (selectedRoute.fare || '--')}
             </div>
             {typeof selectedRoute.fare === 'object' && selectedRoute.fare.smartCardPeak != null && (
-              <div className="text-xs text-gray-500 dark:text-gray-400 text-right">
+              <div className="text-xs text-gray-500 dark:text-gray-400 text-right whitespace-nowrap">
                 Smart Card: ₹{selectedRoute.fare.smartCardPeak}
                 <span className="text-gray-400 dark:text-gray-500"> / </span>
                 ₹{selectedRoute.fare.smartCardOffPeak}
@@ -137,7 +137,7 @@ export default function RouteResults({ routes }) {
         </div>
 
         {/* Arrival Time */}
-        <div className="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700 text-sm text-gray-600 dark:text-gray-400">
+        <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700 text-sm text-gray-600 dark:text-gray-400">
           Estimated arrival: <span className="font-medium text-gray-900 dark:text-white">{getEstimatedArrival(selectedRoute.estimatedTime || selectedRoute.totalTime || 0)}</span>
         </div>
       </div>
