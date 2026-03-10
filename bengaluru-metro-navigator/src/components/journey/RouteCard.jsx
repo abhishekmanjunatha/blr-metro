@@ -1,10 +1,22 @@
 import { Link } from 'react-router-dom';
-import { useMemo, memo } from 'react';
-import { ArrowRight, MapPin, Train } from 'lucide-react';
+import { useMemo, memo, useState, useCallback } from 'react';
+import {
+  ArrowRight,
+  MapPin,
+  Train,
+  ArrowLeftRight,
+  ChevronDown,
+  Circle,
+  Clock,
+  Footprints,
+  Navigation,
+  CheckCircle2,
+} from 'lucide-react';
 import {
   getLineColor,
   getLineName,
   getLineHexColor,
+  formatDuration,
   MAJESTIC_INTERCHANGE_BUFFER_KM,
 } from '../../utils/routeCalculator';
 
@@ -12,10 +24,6 @@ import {
 // Helpers
 // ============================================================================
 
-/**
- * Derive contextual transfer metadata from the interchange station name.
- * Returns walking time, fare buffer, and a human-readable description.
- */
 function getInterchangeMeta(stationName, fromLine, toLine) {
   const n = (stationName || '').toLowerCase();
 
@@ -37,13 +45,9 @@ function getInterchangeMeta(stationName, fromLine, toLine) {
 }
 
 /**
- * Flatten route segments into a linear sequence of timeline entries.
+ * Build a linear timeline from route segments.
  *
- * Entry types:
- *   origin         – first station of the journey
- *   intermediates  – collapsed list of pass-through stations
- *   interchange    – line-change node with transfer metadata
- *   destination    – final station of the journey
+ * Entry types: origin, intermediates, interchange, destination
  */
 function buildTimeline(segments) {
   if (!segments?.length) return [];
@@ -56,12 +60,10 @@ function buildTimeline(segments) {
     const next    = segments[i + 1];
     const s       = seg.stations || [];
 
-    // Origin — first station of the first segment
     if (isFirst && s.length > 0) {
       entries.push({ type: 'origin', station: s[0], line: seg.line, serial: serial++ });
     }
 
-    // Intermediates — everything between the anchored first & last station
     const mid = s.length > 2 ? s.slice(1, s.length - 1) : [];
     if (mid.length > 0) {
       const serialStart = serial;
@@ -69,7 +71,6 @@ function buildTimeline(segments) {
       entries.push({ type: 'intermediates', stations: mid, line: seg.line, serialStart });
     }
 
-    // Interchange — junction between this segment and the next
     if (!isLast && next?.stations?.length) {
       const station = next.stations[0];
       entries.push({
@@ -82,7 +83,6 @@ function buildTimeline(segments) {
       });
     }
 
-    // Destination — last station of the last segment
     if (isLast && s.length > 1) {
       entries.push({
         type: 'destination',
@@ -96,100 +96,190 @@ function buildTimeline(segments) {
   return entries;
 }
 
+/** Count total intermediate stations across all collapsed groups */
+function countIntermediateStops(timeline) {
+  return timeline
+    .filter(e => e.type === 'intermediates')
+    .reduce((sum, e) => sum + e.stations.length, 0);
+}
+
+/** Count interchanges */
+function countInterchanges(timeline) {
+  return timeline.filter(e => e.type === 'interchange').length;
+}
+
+/** Collect unique line IDs in order */
+function getLineSequence(segments) {
+  if (!segments?.length) return [];
+  const seen = new Set();
+  const lines = [];
+  for (const seg of segments) {
+    if (seg.line && !seen.has(seg.line)) {
+      seen.add(seg.line);
+      lines.push(seg.line);
+    }
+  }
+  return lines;
+}
+
 // ============================================================================
-// Timeline sub-components
+// Journey Summary Bar
 // ============================================================================
 
-/**
- * Renders a single station node row: dot ▸ content, with an optional
- * track line extending downward to the next row.
- *
- * Handles three roles: origin, interchange and destination.
- * At interchange nodes the dot uses a bicolor gradient and transfer
- * details are rendered inline below the station name.
- */
+const JourneySummaryBar = memo(function JourneySummaryBar({ route, timeline }) {
+  const stops = (route.totalStops || route.stationsCount || 0);
+  const interchanges = countInterchanges(timeline);
+  const lines = getLineSequence(route.segments);
+  const duration = route.estimatedTime || route.totalTime || 0;
+
+  return (
+    <div className="route-summary-bar">
+      <div className="route-summary-chips">
+        {/* Duration */}
+        <div className="route-chip">
+          <Clock className="w-3.5 h-3.5" />
+          <span>{formatDuration(duration)}</span>
+        </div>
+
+        {/* Stops */}
+        <div className="route-chip">
+          <Train className="w-3.5 h-3.5" />
+          <span>{stops} stops</span>
+        </div>
+
+        {/* Transfers */}
+        {interchanges > 0 && (
+          <div className="route-chip route-chip-transfer">
+            <ArrowLeftRight className="w-3.5 h-3.5" />
+            <span>{interchanges} transfer{interchanges > 1 ? 's' : ''}</span>
+          </div>
+        )}
+      </div>
+
+      {/* Line color pills — visual indicator of line segments */}
+      <div className="flex items-center gap-1.5 mt-2">
+        {lines.map((line, i) => (
+          <div key={line} className="flex items-center gap-1.5">
+            {i > 0 && (
+              <ArrowRight className="w-3 h-3 text-gray-400 dark:text-gray-500 flex-shrink-0" />
+            )}
+            <span
+              className="route-line-pill"
+              style={{ backgroundColor: getLineHexColor(line) }}
+            >
+              {getLineName(line)}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+});
+
+// ============================================================================
+// Timeline Node — origin, interchange, destination
+// ============================================================================
+
 const TimelineNode = memo(function TimelineNode({ entry, showTrack }) {
+  const isOrigin      = entry.type === 'origin';
+  const isDestination = entry.type === 'destination';
   const isInterchange = entry.type === 'interchange';
   const activeLine    = isInterchange ? entry.toLine : entry.line;
   const trackColor    = getLineColor(activeLine);
 
-  // ── Dot styling ──
-  const dotSize  = isInterchange ? 'w-5 h-5' : 'w-3.5 h-3.5';
-  const dotBg    = isInterchange ? '' : getLineColor(entry.line);
-  const dotRing  = isInterchange
-    ? 'ring-2 ring-white dark:ring-gray-800 shadow-md'
-    : 'ring-[3px] ring-white dark:ring-gray-800';
-  const dotStyle = isInterchange
-    ? {
-        background: `linear-gradient(
-          135deg,
-          ${getLineHexColor(entry.fromLine)} 50%,
-          ${getLineHexColor(entry.toLine)} 50%
-        )`,
-      }
-    : undefined;
+  // Label for the node type
+  const nodeLabel = isOrigin
+    ? 'BOARD'
+    : isDestination
+      ? 'ALIGHT'
+      : 'CHANGE';
+
+  const labelColor = isOrigin
+    ? 'route-label-board'
+    : isDestination
+      ? 'route-label-alight'
+      : 'route-label-change';
 
   return (
-    <div className="flex gap-3" role="listitem">
-      {/* ── Left column: dot + track ── */}
-      <div className="flex flex-col items-center w-5 flex-shrink-0">
-        <div
-          className={`${dotSize} rounded-full ${dotBg} ${dotRing} flex-shrink-0 z-[1]`}
-          style={dotStyle}
-          aria-hidden="true"
-        />
+    <div className="route-timeline-row" role="listitem">
+      {/* ── Left: dot + track ── */}
+      <div className="route-timeline-rail">
+        {/* Node dot */}
+        {isInterchange ? (
+          <div
+            className="route-dot-interchange"
+            style={{
+              background: `linear-gradient(135deg, ${getLineHexColor(entry.fromLine)} 50%, ${getLineHexColor(entry.toLine)} 50%)`,
+            }}
+            aria-hidden="true"
+          >
+            <ArrowLeftRight className="w-3 h-3 text-white drop-shadow-sm" />
+          </div>
+        ) : isOrigin ? (
+          <div
+            className="route-dot-endpoint"
+            style={{ backgroundColor: getLineHexColor(entry.line) }}
+            aria-hidden="true"
+          >
+            <Navigation className="w-3 h-3 text-white" />
+          </div>
+        ) : (
+          <div
+            className="route-dot-endpoint"
+            style={{ backgroundColor: getLineHexColor(entry.line) }}
+            aria-hidden="true"
+          >
+            <MapPin className="w-3 h-3 text-white" />
+          </div>
+        )}
+
+        {/* Track line to next node */}
         {showTrack && (
-          <div className={`w-0.5 flex-1 ${trackColor}`} aria-hidden="true" />
+          <div className={`route-track ${trackColor}`} aria-hidden="true" />
         )}
       </div>
 
-      {/* ── Right column: content ── */}
-      <div className={`flex-1 min-w-0 ${showTrack ? 'pb-4' : ''}`}>
-        {/* Station name + line badge */}
-        <div className="flex items-start justify-between gap-2">
-          <div className="min-w-0 flex items-start gap-2">
-            <span className="flex-shrink-0 w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-[10px] font-bold flex items-center justify-center mt-0.5">
-              {entry.serial}
-            </span>
-            <div className="min-w-0">
-              <Link
-                to={`/stations/${entry.station?.id}`}
-                className="font-semibold text-gray-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors break-words"
-              >
-                {entry.station?.name}
-              </Link>
-              {entry.station?.nameKannada && (
-                <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">
-                  {entry.station.nameKannada}
-                </p>
-              )}
-            </div>
-          </div>
+      {/* ── Right: content ── */}
+      <div className={`route-timeline-content ${showTrack ? 'pb-1' : ''}`}>
+        {/* Type label pill */}
+        <span className={`route-label ${labelColor}`}>
+          {nodeLabel}
+        </span>
 
-          {/* Line badge — origin & destination only */}
-          {!isInterchange && (
-            <span className={`badge-${entry.line} flex-shrink-0 text-xs`}>
-              {getLineName(entry.line)}
-            </span>
-          )}
-        </div>
+        {/* Station name + Kannada */}
+        <Link
+          to={`/stations/${entry.station?.id}`}
+          className="route-station-name"
+        >
+          {entry.station?.name}
+        </Link>
+        {entry.station?.nameKannada && (
+          <p className="route-station-kannada">{entry.station.nameKannada}</p>
+        )}
 
-        {/* ── Interchange: inline transfer details ── */}
+        {/* Line badge — origin & destination only */}
+        {!isInterchange && (
+          <span className={`badge-${entry.line} mt-1 text-[11px] leading-none`}>
+            {getLineName(entry.line)}
+          </span>
+        )}
+
+        {/* Transfer details at interchange */}
         {isInterchange && entry.meta && (
-          <div className="mt-1.5 space-y-0.5" aria-label="Transfer details">
-            <p className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-1.5">
-              <span
-                className="inline-block w-2 h-2 rounded-full flex-shrink-0"
-                style={{ backgroundColor: getLineHexColor(entry.toLine) }}
-                aria-hidden="true"
-              />
-              Change to {getLineName(entry.toLine)}
-            </p>
-            <p className="text-xs text-gray-500 dark:text-gray-400 pl-3.5">
-              {entry.meta.note} • ~{entry.meta.walkingTime} min walk
-            </p>
+          <div className="route-interchange-details" aria-label="Transfer details">
+            <div className="route-interchange-banner">
+              <Footprints className="w-4 h-4 flex-shrink-0" />
+              <div>
+                <p className="font-semibold text-sm">
+                  Change to {getLineName(entry.toLine)}
+                </p>
+                <p className="text-xs opacity-80 mt-0.5">
+                  {entry.meta.note} &bull; ~{entry.meta.walkingTime} min walk
+                </p>
+              </div>
+            </div>
             {entry.meta.bufferKm > 0 && (
-              <p className="text-xs text-gray-400 dark:text-gray-500 pl-3.5">
+              <p className="text-[11px] text-gray-400 dark:text-gray-500 mt-1 ml-1">
                 +{entry.meta.bufferKm} km added to fare distance
               </p>
             )}
@@ -200,96 +290,118 @@ const TimelineNode = memo(function TimelineNode({ entry, showTrack }) {
   );
 });
 
-/**
- * Renders the collapsible intermediate-stations section.
- * The track line runs continuously through the left column.
- */
-const TimelineTrack = memo(function TimelineTrack({ stations, line, serialStart }) {
+// ============================================================================
+// Collapsible Intermediate Stations
+// ============================================================================
+
+const IntermediateStops = memo(function IntermediateStops({ stations, line, serialStart }) {
+  const [expanded, setExpanded] = useState(false);
   const trackColor = getLineColor(line);
 
+  const toggle = useCallback(() => setExpanded(prev => !prev), []);
+
   return (
-    <div className="flex gap-3" role="listitem">
-      {/* ── Left column: continuous track ── */}
-      <div className="flex flex-col items-center w-5 flex-shrink-0">
-        <div className={`w-0.5 flex-1 ${trackColor}`} aria-hidden="true" />
+    <div className="route-timeline-row" role="listitem">
+      {/* ── Left: continuous track ── */}
+      <div className="route-timeline-rail">
+        <div className={`route-track-full ${trackColor}`} aria-hidden="true" />
       </div>
 
-      {/* ── Right column: content ── */}
-      <div className="flex-1 min-w-0 py-0.5">
-        <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg px-3 py-2">
-          <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1.5">
-            <Train className="w-3.5 h-3.5 flex-shrink-0" />
-            <span>
-              {stations.length} intermediate station
-              {stations.length !== 1 && 's'}
+      {/* ── Right: collapsible stops ── */}
+      <div className="route-timeline-content py-0.5">
+        <button
+          onClick={toggle}
+          className="route-stops-toggle"
+          aria-expanded={expanded}
+          aria-label={`${expanded ? 'Collapse' : 'Expand'} ${stations.length} intermediate stops`}
+        >
+          <div className="flex items-center gap-2">
+            <div className="route-stops-dots" aria-hidden="true">
+              <span style={{ backgroundColor: getLineHexColor(line) }} />
+              <span style={{ backgroundColor: getLineHexColor(line) }} />
+              <span style={{ backgroundColor: getLineHexColor(line) }} />
+            </div>
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
+              {stations.length} stop{stations.length !== 1 ? 's' : ''}
             </span>
-          </p>
-          <details className="mt-1">
-            <summary className="text-xs text-purple-600 dark:text-purple-400 cursor-pointer hover:underline select-none">
-              View all stops
-            </summary>
-            <ul className="mt-1.5 space-y-1 pl-0.5">
-              {stations.map((st, j) => (
-                <li
-                  key={st.id || j}
-                  className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-2"
+          </div>
+          <ChevronDown
+            className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}
+          />
+        </button>
+
+        {/* Expanded station list */}
+        {expanded && (
+          <ul className="route-stops-list animate-slide-down">
+            {stations.map((st, j) => (
+              <li key={st.id || j} className="route-stops-item">
+                <span
+                  className="route-stops-dot-sm"
+                  style={{ backgroundColor: getLineHexColor(line) }}
+                  aria-hidden="true"
+                />
+                <Link
+                  to={`/stations/${st.id}`}
+                  className="text-sm text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
                 >
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 text-[10px] font-bold flex items-center justify-center">
-                    {serialStart + j}
+                  {st.name}
+                </Link>
+                {st.nameKannada && (
+                  <span className="text-[11px] text-gray-400 dark:text-gray-500 ml-1.5">
+                    {st.nameKannada}
                   </span>
-                  <span>
-                    {st.name}
-                    {st.nameKannada && (
-                      <span className="text-gray-400 dark:text-gray-500 ml-1.5 text-xs">
-                        {st.nameKannada}
-                      </span>
-                    )}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </details>
-        </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );
 });
 
 // ============================================================================
-// Main component
+// Arrival Marker
+// ============================================================================
+
+const ArrivalMarker = memo(function ArrivalMarker() {
+  return (
+    <div className="route-timeline-row pt-1" role="listitem">
+      <div className="route-timeline-rail">
+        <div className="route-dot-arrival" aria-hidden="true">
+          <CheckCircle2 className="w-4 h-4 text-white" />
+        </div>
+      </div>
+      <div className="route-timeline-content">
+        <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+          You've arrived!
+        </p>
+      </div>
+    </div>
+  );
+});
+
+// ============================================================================
+// Main RouteCard
 // ============================================================================
 
 export default function RouteCard({ route }) {
   if (!route?.segments) return null;
 
-  // Flatten segments into a linear timeline — memoised for perf
   const timeline = useMemo(
     () => buildTimeline(route.segments),
     [route.segments],
   );
 
   return (
-    <div className="card overflow-hidden">
-      {/* ── Route Header ── */}
-      <div className="bg-gradient-to-r from-metro-purple to-metro-purple/80 p-4 text-white">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 min-w-0">
-            <MapPin className="w-5 h-5 flex-shrink-0" />
-            <span className="font-medium truncate">{route.originName}</span>
-          </div>
-          <ArrowRight className="w-5 h-5 flex-shrink-0 mx-2" />
-          <div className="flex items-center gap-2 min-w-0">
-            <span className="font-medium truncate">{route.destinationName}</span>
-            <MapPin className="w-5 h-5 flex-shrink-0" />
-          </div>
-        </div>
-      </div>
+    <div className="card route-card overflow-hidden">
+      {/* ── Journey Summary ── */}
+      <JourneySummaryBar route={route} timeline={timeline} />
 
-      {/* ── Unified Timeline ── */}
-      <div className="p-4" role="list" aria-label="Journey timeline">
-        {/* Same-station fallback */}
+      {/* ── Timeline ── */}
+      <div className="route-timeline" role="list" aria-label="Journey timeline">
         {timeline.length === 0 && (
-          <p className="text-sm text-gray-500 dark:text-gray-400 text-center py-2">
+          <p className="text-sm text-gray-500 dark:text-gray-400 text-center py-4">
             Same station entry / exit — no travel required.
           </p>
         )}
@@ -299,7 +411,7 @@ export default function RouteCard({ route }) {
 
           if (entry.type === 'intermediates') {
             return (
-              <TimelineTrack
+              <IntermediateStops
                 key={`track-${i}`}
                 stations={entry.stations}
                 line={entry.line}
@@ -317,17 +429,7 @@ export default function RouteCard({ route }) {
           );
         })}
 
-        {/* ── Arrival marker ── */}
-        {timeline.length > 0 && (
-          <div className="flex gap-3 pt-2" role="listitem">
-            <div className="flex flex-col items-center w-5 flex-shrink-0">
-              <div className="w-3.5 h-3.5 rounded-full bg-gray-900 dark:bg-white ring-[3px] ring-gray-200 dark:ring-gray-700" />
-            </div>
-            <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
-              You've arrived!
-            </p>
-          </div>
-        )}
+        {timeline.length > 0 && <ArrivalMarker />}
       </div>
     </div>
   );

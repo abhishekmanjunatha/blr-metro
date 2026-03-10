@@ -3,22 +3,10 @@
  * Privacy-first approach - no personal data collection
  */
 
-// GA4 measurement ID
-const GA_MEASUREMENT_ID = 'G-88Y4EY0RG1';
-
 // Check if analytics is loaded
 const isAnalyticsLoaded = () => {
   return typeof window !== 'undefined' && window.gtag;
 };
-
-/**
- * Initialize Google Analytics
- * The gtag script is already loaded via index.html.
- * This function is a no-op kept for backwards compatibility.
- */
-export function initializeAnalytics() {
-  // gtag loaded via <script> in index.html — nothing to do here
-}
 
 /**
  * Track page view

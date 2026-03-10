@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BarChart3, TrendingUp, Users, MapPin, Clock, DollarSign } from 'lucide-react';
+import { BarChart3, TrendingUp, Users, MapPin, Clock } from 'lucide-react';
 import { getTrendingRoutes, getTrendingAttractions } from '../../utils/analytics';
 
 /**
@@ -58,10 +58,10 @@ export default function AnalyticsDashboard() {
             color="orange"
           />
           <StatCard
-            icon={DollarSign}
-            title="Ad Revenue"
+            icon={Clock}
+            title="Avg. Session"
             value="---"
-            subtitle="Check AdSense dashboard"
+            subtitle="Check GA4 for live data"
             color="blue"
           />
         </div>
@@ -137,27 +137,11 @@ export default function AnalyticsDashboard() {
               value="City-wise and region-wise traffic"
               note="Check GA4 > Reports > User > User Attributes > Demographics"
             />
-            <InfoRow
-              label="AdSense Revenue"
-              value="Track ad performance and earnings"
-              link="https://www.google.com/adsense"
-            />
+
           </div>
         </div>
 
-        {/* Setup Instructions */}
-        <div className="mt-8 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-100 mb-3">
-            📊 Setup Instructions
-          </h3>
-          <ol className="space-y-2 text-sm text-blue-800 dark:text-blue-200">
-            <li>1. Replace <code className="bg-blue-100 dark:bg-blue-800 px-2 py-0.5 rounded">G-XXXXXXXXXX</code> in index.html with your GA4 Measurement ID</li>
-            <li>2. Replace <code className="bg-blue-100 dark:bg-blue-800 px-2 py-0.5 rounded">ca-pub-XXXXXXXXXXXXXXXX</code> with your AdSense Publisher ID</li>
-            <li>3. Set up Google Analytics 4 property at <a href="https://analytics.google.com" target="_blank" rel="noopener noreferrer" className="underline">analytics.google.com</a></li>
-            <li>4. Apply for Google AdSense at <a href="https://www.google.com/adsense" target="_blank" rel="noopener noreferrer" className="underline">adsense.google.com</a></li>
-            <li>5. Deploy your app and verify tracking is working</li>
-          </ol>
-        </div>
+
       </div>
     </div>
   );

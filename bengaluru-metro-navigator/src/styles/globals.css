@@ -250,6 +250,164 @@
   }
 }
 
+/* ============================================================================
+   Route Card — Transit-style journey timeline
+   ============================================================================ */
+@layer components {
+  /* Card container */
+  .route-card {
+    @apply border border-gray-200 dark:border-gray-700;
+  }
+
+  /* ── Summary bar ── */
+  .route-summary-bar {
+    @apply px-4 pt-4 pb-3 border-b border-gray-100 dark:border-gray-800;
+  }
+
+  .route-summary-chips {
+    @apply flex flex-wrap items-center gap-2;
+  }
+
+  .route-chip {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full
+           text-xs font-medium
+           bg-gray-100 text-gray-700
+           dark:bg-gray-800 dark:text-gray-300;
+  }
+
+  .route-chip-transfer {
+    @apply bg-amber-50 text-amber-700
+           dark:bg-amber-900/30 dark:text-amber-300;
+  }
+
+  .route-line-pill {
+    @apply px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-white leading-tight;
+  }
+
+  /* ── Timeline layout ── */
+  .route-timeline {
+    @apply px-4 py-4;
+  }
+
+  .route-timeline-row {
+    @apply flex gap-4;
+  }
+
+  .route-timeline-rail {
+    @apply flex flex-col items-center w-7 flex-shrink-0;
+  }
+
+  .route-timeline-content {
+    @apply flex-1 min-w-0 pb-5;
+  }
+
+  /* ── Dots ── */
+  .route-dot-endpoint {
+    @apply w-7 h-7 rounded-full flex items-center justify-center
+           flex-shrink-0 z-[1]
+           ring-[3px] ring-white dark:ring-gray-900
+           shadow-md;
+  }
+
+  .route-dot-interchange {
+    @apply w-8 h-8 rounded-full flex items-center justify-center
+           flex-shrink-0 z-[1]
+           ring-[3px] ring-white dark:ring-gray-900
+           shadow-lg;
+  }
+
+  .route-dot-arrival {
+    @apply w-7 h-7 rounded-full flex items-center justify-center
+           bg-gray-800 dark:bg-gray-200
+           ring-[3px] ring-gray-200 dark:ring-gray-700
+           shadow-md flex-shrink-0;
+  }
+
+  /* ── Track lines ── */
+  .route-track {
+    @apply w-[3px] flex-1 rounded-full opacity-80;
+  }
+
+  .route-track-full {
+    @apply w-[3px] h-full rounded-full opacity-60;
+    min-height: 2.5rem;
+  }
+
+  /* ── Labels ── */
+  .route-label {
+    @apply inline-block text-[10px] font-bold uppercase tracking-wider
+           px-2 py-0.5 rounded mb-1;
+  }
+
+  .route-label-board {
+    @apply bg-emerald-100 text-emerald-700
+           dark:bg-emerald-900/40 dark:text-emerald-300;
+  }
+
+  .route-label-alight {
+    @apply bg-red-100 text-red-700
+           dark:bg-red-900/40 dark:text-red-300;
+  }
+
+  .route-label-change {
+    @apply bg-amber-100 text-amber-700
+           dark:bg-amber-900/40 dark:text-amber-300;
+  }
+
+  /* ── Station name ── */
+  .route-station-name {
+    @apply block text-base font-bold text-gray-900 dark:text-white
+           hover:text-purple-600 dark:hover:text-purple-400
+           transition-colors break-words leading-snug;
+  }
+
+  .route-station-kannada {
+    @apply text-xs text-gray-400 dark:text-gray-500 mt-0.5;
+  }
+
+  /* ── Interchange banner ── */
+  .route-interchange-details {
+    @apply mt-2;
+  }
+
+  .route-interchange-banner {
+    @apply flex items-start gap-2.5 px-3 py-2.5 rounded-lg
+           bg-amber-50 text-amber-800 border border-amber-200/60
+           dark:bg-amber-900/20 dark:text-amber-200 dark:border-amber-800/40;
+  }
+
+  /* ── Collapsible stops ── */
+  .route-stops-toggle {
+    @apply w-full flex items-center justify-between
+           px-3 py-2.5 rounded-lg
+           bg-gray-50 dark:bg-gray-800/60
+           hover:bg-gray-100 dark:hover:bg-gray-800
+           transition-colors cursor-pointer
+           border border-transparent hover:border-gray-200 dark:hover:border-gray-700;
+  }
+
+  .route-stops-dots {
+    @apply flex items-center gap-[3px];
+  }
+
+  .route-stops-dots > span {
+    @apply block w-1.5 h-1.5 rounded-full opacity-60;
+  }
+
+  .route-stops-list {
+    @apply mt-2 ml-1 space-y-1.5 pb-1;
+  }
+
+  .route-stops-item {
+    @apply flex items-center gap-2.5 py-1 px-2 rounded
+           hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors;
+  }
+
+  .route-stops-dot-sm {
+    @apply block w-2 h-2 rounded-full flex-shrink-0 opacity-70;
+  }
+}
+
 /* Print styles */
 @media print {
   .no-print {

@@ -147,23 +147,7 @@ export function calculateTotalRouteDistance(segments) {
 
 /**
  * Calculate fare based on total route distance in kilometers.
- *
- * Official BMRCL Distance Slabs (Fare Fixation Committee, effective Feb 9, 2025):
- *   F1:  0–2 km   → ₹10
- *   F2:  2–4 km   → ₹20
- *   F3:  4–6 km   → ₹30
- *   F4:  6–8 km   → ₹40
- *   F5:  8–10 km  → ₹50
- *   F6:  10–15 km → ₹60
- *   F7:  15–20 km → ₹70
- *   F8:  20–25 km → ₹80
- *   F9:  25–30 km → ₹90
- *   F10: >30 km   → ₹90 (maximum fare cap)
- *
- * Smart Card discounts (on corresponding token fares):
- *   Peak hours:                5%  discount
- *   Off-peak hours:           10%  discount
- *   Sundays & National Holidays: 10%  discount
+ * Delegates slab lookup to fareEngine.lookupFare to avoid duplication.
  *
  * @param {number} distanceKm - Total route distance in km
  * @param {string} ticketType - "TOKEN" | "SMART_CARD"
@@ -177,40 +161,14 @@ export function calculateFare(
   isOffPeak = false,
   isSundayOrHoliday = false
 ) {
-  // CEILING RULE: BMRCL bills at any fraction over the slab boundary.
   const d = distanceKm <= 0 ? 0 : Math.ceil(distanceKm);
-
-  let baseFare;
-
-  if (d <= 0) {
-    baseFare = 10; // Same station entry/exit
-  } else if (d <= 2) {
-    baseFare = 10; // F1
-  } else if (d <= 4) {
-    baseFare = 20; // F2
-  } else if (d <= 6) {
-    baseFare = 30; // F3
-  } else if (d <= 8) {
-    baseFare = 40; // F4
-  } else if (d <= 10) {
-    baseFare = 50; // F5
-  } else if (d <= 15) {
-    baseFare = 60; // F6
-  } else if (d <= 20) {
-    baseFare = 70; // F7
-  } else if (d <= 25) {
-    baseFare = 80; // F8
-  } else {
-    baseFare = 90; // F9/F10 — capped maximum fare
-  }
+  let baseFare = lookupFare(d);
 
   // Smart Card discounts (BMRCL FFC 2025)
   if (ticketType === 'SMART_CARD') {
     if (isSundayOrHoliday || isOffPeak) {
-      // 10% discount on Sundays/Holidays AND off-peak hours
       baseFare = Math.round(baseFare * 0.9);
     } else {
-      // 5% discount during peak hours
       baseFare = Math.round(baseFare * 0.95);
     }
   }
