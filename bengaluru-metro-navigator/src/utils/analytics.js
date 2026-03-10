@@ -3,8 +3,8 @@
  * Privacy-first approach - no personal data collection
  */
 
-// Placeholder for GA4 measurement ID - will be replaced with actual ID
-const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+// GA4 measurement ID
+const GA_MEASUREMENT_ID = 'G-88Y4EY0RG1';
 
 // Check if analytics is loaded
 const isAnalyticsLoaded = () => {
@@ -13,32 +13,11 @@ const isAnalyticsLoaded = () => {
 
 /**
  * Initialize Google Analytics
+ * The gtag script is already loaded via index.html.
+ * This function is a no-op kept for backwards compatibility.
  */
 export function initializeAnalytics() {
-  if (typeof window === 'undefined') return;
-  
-  // Only load in production or if explicitly enabled
-  if (import.meta.env.DEV && !import.meta.env.VITE_ENABLE_ANALYTICS) {
-    console.log('Analytics disabled in development');
-    return;
-  }
-  
-  // Create script element for GA4
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-  document.head.appendChild(script);
-  
-  // Initialize gtag
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function() {
-    window.dataLayer.push(arguments);
-  };
-  window.gtag('js', new Date());
-  window.gtag('config', GA_MEASUREMENT_ID, {
-    anonymize_ip: true,
-    cookie_flags: 'SameSite=None;Secure'
-  });
+  // gtag loaded via <script> in index.html — nothing to do here
 }
 
 /**
