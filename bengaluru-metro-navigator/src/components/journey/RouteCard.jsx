@@ -135,19 +135,14 @@ const JourneySummaryBar = memo(function JourneySummaryBar({ route, timeline }) {
   return (
     <div className="route-summary-bar">
       <div className="route-summary-chips">
-        {/* Duration */}
         <div className="route-chip">
           <Clock className="w-3.5 h-3.5" />
           <span>{formatDuration(duration)}</span>
         </div>
-
-        {/* Stops */}
         <div className="route-chip">
           <Train className="w-3.5 h-3.5" />
           <span>{stops} stops</span>
         </div>
-
-        {/* Transfers */}
         {interchanges > 0 && (
           <div className="route-chip route-chip-transfer">
             <ArrowLeftRight className="w-3.5 h-3.5" />
@@ -156,10 +151,10 @@ const JourneySummaryBar = memo(function JourneySummaryBar({ route, timeline }) {
         )}
       </div>
 
-      {/* Line color pills — visual indicator of line segments */}
-      <div className="flex items-center gap-1.5 mt-2">
+      {/* Line color pills */}
+      <div className="route-line-sequence">
         {lines.map((line, i) => (
-          <div key={line} className="flex items-center gap-1.5">
+          <div key={line} className="flex items-center gap-1 sm:gap-1.5">
             {i > 0 && (
               <ArrowRight className="w-3 h-3 text-gray-400 dark:text-gray-500 flex-shrink-0" />
             )}
@@ -204,7 +199,6 @@ const TimelineNode = memo(function TimelineNode({ entry, showTrack }) {
     <div className="route-timeline-row" role="listitem">
       {/* ── Left: dot + track ── */}
       <div className="route-timeline-rail">
-        {/* Node dot */}
         {isInterchange ? (
           <div
             className="route-dot-interchange"
@@ -213,7 +207,7 @@ const TimelineNode = memo(function TimelineNode({ entry, showTrack }) {
             }}
             aria-hidden="true"
           >
-            <ArrowLeftRight className="w-3 h-3 text-white drop-shadow-sm" />
+            <ArrowLeftRight className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white drop-shadow-sm" />
           </div>
         ) : isOrigin ? (
           <div
@@ -221,7 +215,7 @@ const TimelineNode = memo(function TimelineNode({ entry, showTrack }) {
             style={{ backgroundColor: getLineHexColor(entry.line) }}
             aria-hidden="true"
           >
-            <Navigation className="w-3 h-3 text-white" />
+            <Navigation className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" />
           </div>
         ) : (
           <div
@@ -229,11 +223,10 @@ const TimelineNode = memo(function TimelineNode({ entry, showTrack }) {
             style={{ backgroundColor: getLineHexColor(entry.line) }}
             aria-hidden="true"
           >
-            <MapPin className="w-3 h-3 text-white" />
+            <MapPin className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" />
           </div>
         )}
 
-        {/* Track line to next node */}
         {showTrack && (
           <div className={`route-track ${trackColor}`} aria-hidden="true" />
         )}
@@ -268,18 +261,18 @@ const TimelineNode = memo(function TimelineNode({ entry, showTrack }) {
         {isInterchange && entry.meta && (
           <div className="route-interchange-details" aria-label="Transfer details">
             <div className="route-interchange-banner">
-              <Footprints className="w-4 h-4 flex-shrink-0" />
-              <div>
-                <p className="font-semibold text-sm">
+              <Footprints className="w-4 h-4 flex-shrink-0 mt-0.5" />
+              <div className="min-w-0">
+                <p className="font-semibold text-[13px] sm:text-sm leading-tight">
                   Change to {getLineName(entry.toLine)}
                 </p>
-                <p className="text-xs opacity-80 mt-0.5">
+                <p className="text-[11px] sm:text-xs opacity-80 mt-0.5 leading-snug">
                   {entry.meta.note} &bull; ~{entry.meta.walkingTime} min walk
                 </p>
               </div>
             </div>
             {entry.meta.bufferKm > 0 && (
-              <p className="text-[11px] text-gray-400 dark:text-gray-500 mt-1 ml-1">
+              <p className="text-[10px] sm:text-[11px] text-gray-400 dark:text-gray-500 mt-1 ml-1">
                 +{entry.meta.bufferKm} km added to fare distance
               </p>
             )}
@@ -311,7 +304,7 @@ const IntermediateStops = memo(function IntermediateStops({ stations, line, seri
       <div className="route-timeline-content py-0.5">
         <button
           onClick={toggle}
-          className="route-stops-toggle"
+          className="route-stops-toggle touch-manipulation"
           aria-expanded={expanded}
           aria-label={`${expanded ? 'Collapse' : 'Expand'} ${stations.length} intermediate stops`}
         >
@@ -321,7 +314,7 @@ const IntermediateStops = memo(function IntermediateStops({ stations, line, seri
               <span style={{ backgroundColor: getLineHexColor(line) }} />
               <span style={{ backgroundColor: getLineHexColor(line) }} />
             </div>
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
+            <span className="text-[13px] sm:text-sm font-medium text-gray-600 dark:text-gray-300">
               {stations.length} stop{stations.length !== 1 ? 's' : ''}
             </span>
           </div>
@@ -342,12 +335,12 @@ const IntermediateStops = memo(function IntermediateStops({ stations, line, seri
                 />
                 <Link
                   to={`/stations/${st.id}`}
-                  className="text-sm text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                  className="text-[13px] sm:text-sm text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors touch-manipulation"
                 >
                   {st.name}
                 </Link>
                 {st.nameKannada && (
-                  <span className="text-[11px] text-gray-400 dark:text-gray-500 ml-1.5">
+                  <span className="text-[11px] text-gray-400 dark:text-gray-500 ml-1 sm:ml-1.5 hidden sm:inline">
                     {st.nameKannada}
                   </span>
                 )}
@@ -369,11 +362,11 @@ const ArrivalMarker = memo(function ArrivalMarker() {
     <div className="route-timeline-row pt-1" role="listitem">
       <div className="route-timeline-rail">
         <div className="route-dot-arrival" aria-hidden="true">
-          <CheckCircle2 className="w-4 h-4 text-white" />
+          <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-white dark:text-gray-800" />
         </div>
       </div>
       <div className="route-timeline-content">
-        <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+        <p className="text-[13px] sm:text-sm font-semibold text-gray-900 dark:text-gray-100">
           You've arrived!
         </p>
       </div>

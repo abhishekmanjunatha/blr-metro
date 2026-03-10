@@ -251,7 +251,7 @@
 }
 
 /* ============================================================================
-   Route Card — Transit-style journey timeline
+   Route Card — Transit-style journey timeline (mobile-first)
    ============================================================================ */
 @layer components {
   /* Card container */
@@ -261,18 +261,36 @@
 
   /* ── Summary bar ── */
   .route-summary-bar {
-    @apply px-4 pt-4 pb-3 border-b border-gray-100 dark:border-gray-800;
+    @apply px-3 pt-3 pb-2.5 border-b border-gray-100 dark:border-gray-800;
+  }
+
+  @screen sm {
+    .route-summary-bar {
+      @apply px-4 pt-4 pb-3;
+    }
   }
 
   .route-summary-chips {
-    @apply flex flex-wrap items-center gap-2;
+    @apply flex flex-wrap items-center gap-1.5;
+  }
+
+  @screen sm {
+    .route-summary-chips {
+      @apply gap-2;
+    }
   }
 
   .route-chip {
-    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full
-           text-xs font-medium
+    @apply inline-flex items-center gap-1 px-2 py-1 rounded-full
+           text-[11px] font-semibold
            bg-gray-100 text-gray-700
            dark:bg-gray-800 dark:text-gray-300;
+  }
+
+  @screen sm {
+    .route-chip {
+      @apply gap-1.5 px-2.5 text-xs font-medium;
+    }
   }
 
   .route-chip-transfer {
@@ -280,47 +298,105 @@
            dark:bg-amber-900/30 dark:text-amber-300;
   }
 
+  .route-line-sequence {
+    @apply flex flex-wrap items-center gap-1 mt-2;
+  }
+
+  @screen sm {
+    .route-line-sequence {
+      @apply gap-1.5;
+    }
+  }
+
   .route-line-pill {
-    @apply px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-white leading-tight;
+    @apply px-2 py-0.5 rounded-full text-[10px] font-bold text-white leading-tight;
+  }
+
+  @screen sm {
+    .route-line-pill {
+      @apply px-2.5 text-[11px] font-semibold;
+    }
   }
 
   /* ── Timeline layout ── */
   .route-timeline {
-    @apply px-4 py-4;
+    @apply px-3 py-3;
+  }
+
+  @screen sm {
+    .route-timeline {
+      @apply px-4 py-4;
+    }
   }
 
   .route-timeline-row {
-    @apply flex gap-4;
+    @apply flex gap-2.5;
+  }
+
+  @screen sm {
+    .route-timeline-row {
+      @apply gap-3.5;
+    }
   }
 
   .route-timeline-rail {
-    @apply flex flex-col items-center w-7 flex-shrink-0;
+    @apply flex flex-col items-center w-6 flex-shrink-0;
+  }
+
+  @screen sm {
+    .route-timeline-rail {
+      @apply w-7;
+    }
   }
 
   .route-timeline-content {
-    @apply flex-1 min-w-0 pb-5;
+    @apply flex-1 min-w-0 pb-4;
+  }
+
+  @screen sm {
+    .route-timeline-content {
+      @apply pb-5;
+    }
   }
 
   /* ── Dots ── */
   .route-dot-endpoint {
-    @apply w-7 h-7 rounded-full flex items-center justify-center
+    @apply w-6 h-6 rounded-full flex items-center justify-center
            flex-shrink-0 z-[1]
-           ring-[3px] ring-white dark:ring-gray-900
+           ring-2 ring-white dark:ring-gray-900
            shadow-md;
   }
 
+  @screen sm {
+    .route-dot-endpoint {
+      @apply w-7 h-7 ring-[3px];
+    }
+  }
+
   .route-dot-interchange {
-    @apply w-8 h-8 rounded-full flex items-center justify-center
+    @apply w-7 h-7 rounded-full flex items-center justify-center
            flex-shrink-0 z-[1]
-           ring-[3px] ring-white dark:ring-gray-900
+           ring-2 ring-white dark:ring-gray-900
            shadow-lg;
   }
 
+  @screen sm {
+    .route-dot-interchange {
+      @apply w-8 h-8 ring-[3px];
+    }
+  }
+
   .route-dot-arrival {
-    @apply w-7 h-7 rounded-full flex items-center justify-center
+    @apply w-6 h-6 rounded-full flex items-center justify-center
            bg-gray-800 dark:bg-gray-200
-           ring-[3px] ring-gray-200 dark:ring-gray-700
+           ring-2 ring-gray-200 dark:ring-gray-700
            shadow-md flex-shrink-0;
+  }
+
+  @screen sm {
+    .route-dot-arrival {
+      @apply w-7 h-7 ring-[3px];
+    }
   }
 
   /* ── Track lines ── */
@@ -335,8 +411,14 @@
 
   /* ── Labels ── */
   .route-label {
-    @apply inline-block text-[10px] font-bold uppercase tracking-wider
-           px-2 py-0.5 rounded mb-1;
+    @apply inline-block text-[9px] font-bold uppercase tracking-wider
+           px-1.5 py-px rounded mb-1;
+  }
+
+  @screen sm {
+    .route-label {
+      @apply text-[10px] px-2 py-0.5;
+    }
   }
 
   .route-label-board {
@@ -356,13 +438,26 @@
 
   /* ── Station name ── */
   .route-station-name {
-    @apply block text-base font-bold text-gray-900 dark:text-white
+    @apply block text-[15px] font-bold text-gray-900 dark:text-white
            hover:text-purple-600 dark:hover:text-purple-400
-           transition-colors break-words leading-snug;
+           transition-colors break-words leading-snug
+           touch-manipulation;
+  }
+
+  @screen sm {
+    .route-station-name {
+      @apply text-base;
+    }
   }
 
   .route-station-kannada {
-    @apply text-xs text-gray-400 dark:text-gray-500 mt-0.5;
+    @apply text-[11px] text-gray-400 dark:text-gray-500 mt-0.5 leading-snug;
+  }
+
+  @screen sm {
+    .route-station-kannada {
+      @apply text-xs;
+    }
   }
 
   /* ── Interchange banner ── */
@@ -371,19 +466,34 @@
   }
 
   .route-interchange-banner {
-    @apply flex items-start gap-2.5 px-3 py-2.5 rounded-lg
+    @apply flex items-start gap-2 px-2.5 py-2 rounded-lg
            bg-amber-50 text-amber-800 border border-amber-200/60
            dark:bg-amber-900/20 dark:text-amber-200 dark:border-amber-800/40;
+  }
+
+  @screen sm {
+    .route-interchange-banner {
+      @apply gap-2.5 px-3 py-2.5;
+    }
   }
 
   /* ── Collapsible stops ── */
   .route-stops-toggle {
     @apply w-full flex items-center justify-between
-           px-3 py-2.5 rounded-lg
+           px-2.5 py-2.5 rounded-lg
            bg-gray-50 dark:bg-gray-800/60
-           hover:bg-gray-100 dark:hover:bg-gray-800
+           active:bg-gray-100 dark:active:bg-gray-800
            transition-colors cursor-pointer
-           border border-transparent hover:border-gray-200 dark:hover:border-gray-700;
+           border border-transparent;
+    min-height: 44px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @screen sm {
+    .route-stops-toggle {
+      @apply px-3 hover:bg-gray-100 dark:hover:bg-gray-800
+             hover:border-gray-200 dark:hover:border-gray-700;
+    }
   }
 
   .route-stops-dots {
@@ -395,12 +505,27 @@
   }
 
   .route-stops-list {
-    @apply mt-2 ml-1 space-y-1.5 pb-1;
+    @apply mt-1.5 space-y-0.5 pb-0.5;
+  }
+
+  @screen sm {
+    .route-stops-list {
+      @apply mt-2 ml-1 space-y-1 pb-1;
+    }
   }
 
   .route-stops-item {
-    @apply flex items-center gap-2.5 py-1 px-2 rounded
-           hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors;
+    @apply flex items-center gap-2 py-1.5 px-2 rounded
+           active:bg-gray-100 dark:active:bg-gray-800/60 transition-colors;
+    min-height: 40px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @screen sm {
+    .route-stops-item {
+      @apply gap-2.5 py-1 hover:bg-gray-50 dark:hover:bg-gray-800/40;
+      min-height: auto;
+    }
   }
 
   .route-stops-dot-sm {
