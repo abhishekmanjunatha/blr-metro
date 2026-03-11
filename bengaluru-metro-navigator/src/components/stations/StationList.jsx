@@ -79,10 +79,10 @@ export default function StationList() {
       {/* Header */}
       <div className="text-center">
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
-          Station Guide
+          Bengaluru Metro Stations Guide
         </h1>
         <p className="mt-2 text-gray-600 dark:text-gray-400">
-          Explore all {stations.length} metro stations
+          Explore all {stations.length} Namma Metro stations across Purple, Green & Yellow lines
         </p>
       </div>
 

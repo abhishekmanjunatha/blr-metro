@@ -1,4 +1,4 @@
-import { useMetroData } from '../hooks';
+import { useMetroData, useDocumentHead } from '../hooks';
 import { JourneyPlanner } from '../components/journey';
 import { LoadingPage } from '../components/common/LoadingSpinner';
 import { ErrorPage } from '../components/common/ErrorMessage';
@@ -61,6 +61,12 @@ InfoTip.displayName = 'InfoTip';
 export default function HomePage() {
   const { isLoading, error } = useMetroData();
 
+  useDocumentHead({
+    title: null,
+    description: 'Plan your Bengaluru Namma Metro route, check fares (₹10-₹90), explore Purple, Green & Yellow line stations, view the metro map and discover nearby attractions. Free offline PWA.',
+    path: '/',
+  });
+
   if (isLoading) {
     return <LoadingPage />;
   }
@@ -77,10 +83,13 @@ export default function HomePage() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        {/* SEO: visually hidden H1 for the page */}
+        <h1 className="sr-only">Namma Metro Navigator — Bengaluru Metro Route Planner, Fare Calculator & Station Guide</h1>
+
         {/* Journey Planner Card - Primary Focus */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 sm:p-6 lg:p-8 mb-8 border border-gray-100 dark:border-gray-700">
+        <section aria-label="Journey Planner" className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 sm:p-6 lg:p-8 mb-8 border border-gray-100 dark:border-gray-700">
           <JourneyPlanner />
-        </div>
+        </section>
 
         {/* Ad Section */}
         <div className="mb-8">

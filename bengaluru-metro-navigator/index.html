@@ -12,20 +12,118 @@
     <meta name="format-detection" content="telephone=no" />
     
     <meta name="theme-color" content="#8B008B" />
-    <meta name="description" content="Namma Metro Navigator - Plan your Bengaluru Metro journey, find attractions near stations, explore the complete metro network with route planning, fares, and timings." />
-    <meta name="keywords" content="Bengaluru Metro, Namma Metro, Metro Route Planner, Bangalore Metro, Metro Map, Purple Line, Green Line, Yellow Line, Metro Stations" />
+    <meta name="description" content="Namma Metro Navigator — Plan Bengaluru Metro routes, check live fares (₹10-₹90), explore Purple, Green & Yellow line stations, view the metro map, and discover attractions near metro stations. Works offline." />
+    <meta name="keywords" content="Bengaluru Metro, Namma Metro, Bangalore Metro route planner, metro fare calculator, Purple Line, Green Line, Yellow Line, metro stations Bangalore, BMRCL, Namma Metro map, metro timings Bengaluru, Majestic metro, metro smart card fare, ನಮ್ಮ ಮೆಟ್ರೋ" />
     <meta name="author" content="Namma Metro Navigator" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <link rel="canonical" href="https://abhishekmanjunatha.github.io/blr-metro/" />
+    
+    <!-- Alternate language -->
+    <link rel="alternate" hreflang="en" href="https://abhishekmanjunatha.github.io/blr-metro/" />
+    <link rel="alternate" hreflang="kn" href="https://abhishekmanjunatha.github.io/blr-metro/" />
     
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Namma Metro Navigator - Bengaluru Metro Route Planner" />
-    <meta property="og:description" content="Plan your journey, discover attractions, and navigate Bengaluru Metro effortlessly" />
-    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:site_name" content="Namma Metro Navigator" />
+    <meta property="og:title" content="Namma Metro Navigator — Bengaluru Metro Route Planner, Fares & Map" />
+    <meta property="og:description" content="Plan Bengaluru Metro routes, check live fares (₹10-₹90), explore Purple, Green & Yellow line stations. Free offline-ready web app." />
+    <meta property="og:url" content="https://abhishekmanjunatha.github.io/blr-metro/" />
+    <meta property="og:image" content="https://abhishekmanjunatha.github.io/blr-metro/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_IN" />
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Namma Metro Navigator" />
-    <meta name="twitter:description" content="Your complete guide to navigating Bengaluru Metro" />
+    <meta name="twitter:title" content="Namma Metro Navigator — Bengaluru Metro Route Planner" />
+    <meta name="twitter:description" content="Plan Bengaluru Metro routes, check fares, explore stations and attractions. Free offline PWA." />
+    <meta name="twitter:image" content="https://abhishekmanjunatha.github.io/blr-metro/og-image.png" />
+    
+    <!-- Structured Data: WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Namma Metro Navigator",
+      "alternateName": ["Bengaluru Metro Route Planner", "ನಮ್ಮ ಮೆಟ್ರೊ ನ್ಯಾವಿಗೇಟರ್"],
+      "url": "https://abhishekmanjunatha.github.io/blr-metro/",
+      "description": "Plan Bengaluru Namma Metro routes, check fares between any two stations, explore the metro map and discover attractions near metro stations.",
+      "applicationCategory": "TravelApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Abhishek Manjunath"
+      },
+      "inLanguage": ["en", "kn"],
+      "about": {
+        "@type": "TransitMap",
+        "name": "Bengaluru Namma Metro Network",
+        "description": "Purple Line, Green Line and Yellow Line metro network in Bengaluru, Karnataka, India"
+      }
+    }
+    </script>
+    
+    <!-- Structured Data: FAQPage for rich snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the Bengaluru Metro fare range?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bengaluru Namma Metro fares range from ₹10 to ₹90 depending on the distance. Smart Card users get a 5% discount during peak hours and an additional discount during off-peak hours."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the Bengaluru Metro operating hours?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Namma Metro operates from 5:00 AM to 11:00 PM daily. During peak hours, trains arrive every 3-5 minutes. Off-peak frequency is 5-10 minutes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many lines does Bengaluru Metro have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bengaluru Namma Metro has three lines: the Purple Line (East-West, 37 stations), Green Line (North-South, 30 stations), and Yellow Line (RV Road to Bommasandra, 16 stations). Interchange stations are at Majestic (Kempegowda) and RV Road."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I interchange between Bengaluru Metro lines?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The main interchange station is Kempegowda (Majestic), connecting the Purple and Green lines. RV Road connects the Green and Yellow lines."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Route Planner", "item": "https://abhishekmanjunatha.github.io/blr-metro/" },
+        { "@type": "ListItem", "position": 2, "name": "Metro Map", "item": "https://abhishekmanjunatha.github.io/blr-metro/map" },
+        { "@type": "ListItem", "position": 3, "name": "Stations", "item": "https://abhishekmanjunatha.github.io/blr-metro/stations" },
+        { "@type": "ListItem", "position": 4, "name": "Attractions", "item": "https://abhishekmanjunatha.github.io/blr-metro/attractions" }
+      ]
+    }
+    </script>
     
     <!-- PWA manifest and icons injected by vite-plugin-pwa -->
     
@@ -50,7 +148,7 @@
       gtag('config', 'G-88Y4EY0RG1');
     </script>
     
-    <title>Namma Metro Navigator | Bengaluru Metro Route Planner</title>
+    <title>Namma Metro Navigator | Bengaluru Metro Route Planner, Fares & Map</title>
     <!-- GitHub Pages SPA redirect handler -->
     <script>
       (function(l) {
@@ -67,6 +165,30 @@
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <div style="max-width:800px;margin:40px auto;padding:20px;font-family:sans-serif">
+        <h1>Namma Metro Navigator — Bengaluru Metro Route Planner</h1>
+        <p>Plan your Bengaluru Namma Metro journey with our free route planner. Check fares (₹10–₹90), explore the complete metro map, and discover attractions near metro stations.</p>
+        <h2>Metro Lines</h2>
+        <ul>
+          <li><strong>Purple Line</strong> — 37 stations (Challaghatta to Whitefield)</li>
+          <li><strong>Green Line</strong> — 30 stations (Nagasandra to Silk Institute)</li>
+          <li><strong>Yellow Line</strong> — 16 stations (RV Road to Bommasandra)</li>
+        </ul>
+        <h2>Features</h2>
+        <ul>
+          <li>Route planner with fare calculation</li>
+          <li>Smart Card fare discounts</li>
+          <li>Station-by-station directions</li>
+          <li>Interchange guidance (Majestic & RV Road)</li>
+          <li>Nearby attractions for every station</li>
+          <li>Offline access as a Progressive Web App</li>
+        </ul>
+        <h2>Operating Hours</h2>
+        <p>First train: 5:00 AM | Last train: 11:00 PM | Peak frequency: 3–5 minutes</p>
+        <p>Enable JavaScript for the full interactive experience.</p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

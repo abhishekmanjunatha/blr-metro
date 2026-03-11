@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://abhishekmanjunatha.github.io/blr-metro/sitemap.xml

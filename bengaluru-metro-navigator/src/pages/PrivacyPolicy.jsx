@@ -1,6 +1,12 @@
 import { Shield, Lock, Eye, Cookie, Database, Mail } from 'lucide-react';
+import { useDocumentHead } from '../hooks';
 
 export default function PrivacyPolicy() {
+  useDocumentHead({
+    title: 'Privacy Policy',
+    description: 'Namma Metro Navigator privacy policy — learn how we handle your data, what we collect and your rights. No personal data collected.',
+    path: '/privacy',
+  });
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,16 +1,23 @@
 ﻿import { Map as MapIcon, ZoomIn, ZoomOut, Maximize2 } from 'lucide-react';
 import { useState } from 'react';
+import { useDocumentHead } from '../hooks';
 
 export default function MapPage() {
   const [zoom, setZoom] = useState(1);
+
+  useDocumentHead({
+    title: 'Bengaluru Metro Map — Purple, Green & Yellow Line Network',
+    description: 'View the complete Bengaluru Namma Metro network map with Purple Line (37 stations), Green Line (30 stations) and Yellow Line (16 stations). Zoomable high-resolution metro route map.',
+    path: '/map',
+  });
 
   return (
     <div className="bg-gray-50 min-h-screen p-4">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-4">
           <MapIcon className="w-8 h-8 text-purple-600 mx-auto mb-2" />
-          <h1 className="text-2xl font-bold">Metro Network Map</h1>
-          <p className="text-sm text-gray-600 mt-1">Bengaluru Namma Metro Route Map</p>
+          <h1 className="text-2xl font-bold">Bengaluru Namma Metro Network Map</h1>
+          <p className="text-sm text-gray-600 mt-1">Complete route map of Purple, Green & Yellow Lines</p>
         </div>
 
         <div className="bg-white rounded-lg shadow-lg p-4 mb-4">
